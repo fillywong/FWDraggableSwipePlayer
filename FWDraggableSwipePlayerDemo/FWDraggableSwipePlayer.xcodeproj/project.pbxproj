@@ -1,0 +1,617 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A14A8B61A70E647000920FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A14A8B51A70E647000920FB /* main.m */; };
+		5A14A8B91A70E647000920FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A14A8B81A70E647000920FB /* AppDelegate.m */; };
+		5A14A8BF1A70E647000920FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A8BD1A70E647000920FB /* Main.storyboard */; };
+		5A14A8C11A70E647000920FB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A8C01A70E647000920FB /* Images.xcassets */; };
+		5A14A8C41A70E647000920FB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A8C21A70E647000920FB /* LaunchScreen.xib */; };
+		5A14A8D01A70E647000920FB /* FWDraggableSwipePlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A14A8CF1A70E647000920FB /* FWDraggableSwipePlayerTests.m */; };
+		5A14A8DD1A70E701000920FB /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A14A8DA1A70E701000920FB /* DemoViewController.m */; };
+		5A14A8DE1A70E701000920FB /* MovieDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A14A8DC1A70E701000920FB /* MovieDetailView.m */; };
+		5A14A8F01A70E73B000920FB /* FWSWipePlayerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A14A8E11A70E73B000920FB /* FWSWipePlayerConfig.m */; };
+		5A14A8F11A70E73B000920FB /* FWDraggablePlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A14A8E31A70E73B000920FB /* FWDraggablePlayerManager.m */; };
+		5A14A8F31A70E73B000920FB /* FWSwiperPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A14A8E71A70E73B000920FB /* FWSwiperPlayerController.m */; };
+		5A14A8F51A70E73B000920FB /* FWSwipePlayerBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A14A8EB1A70E73B000920FB /* FWSwipePlayerBackgroundView.m */; };
+		5A14A8F61A70E73B000920FB /* FWPlayerProgressSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A14A8ED1A70E73B000920FB /* FWPlayerProgressSlider.m */; };
+		5A14A8F71A70E73B000920FB /* FWPlayerColorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A14A8EF1A70E73B000920FB /* FWPlayerColorUtil.m */; };
+		5A14A8F91A70E765000920FB /* list.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A8F81A70E765000920FB /* list.json */; };
+		5A14A9141A70E77B000920FB /* plugin_fullscreen_bottom_lock_btn_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A8FD1A70E77B000920FB /* plugin_fullscreen_bottom_lock_btn_normal.png */; };
+		5A14A9151A70E77B000920FB /* plugin_fullscreen_bottom_lock_btn_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A8FE1A70E77B000920FB /* plugin_fullscreen_bottom_lock_btn_selected.png */; };
+		5A14A9161A70E77B000920FB /* play_gesture_brightness.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A8FF1A70E77B000920FB /* play_gesture_brightness.png */; };
+		5A14A9171A70E77B000920FB /* play_gesture_forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A9001A70E77B000920FB /* play_gesture_forward.png */; };
+		5A14A9181A70E77B000920FB /* play_gesture_rewind.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A9011A70E77B000920FB /* play_gesture_rewind.png */; };
+		5A14A9191A70E77B000920FB /* ic_vidcontrol_fullscreen_off_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A9021A70E77B000920FB /* ic_vidcontrol_fullscreen_off_pressed.png */; };
+		5A14A91A1A70E77B000920FB /* ic_vidcontrol_fullscreen_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A9031A70E77B000920FB /* ic_vidcontrol_fullscreen_off.png */; };
+		5A14A91B1A70E77B000920FB /* ic_vidcontrol_fullscreen_on_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A9041A70E77B000920FB /* ic_vidcontrol_fullscreen_on_pressed.png */; };
+		5A14A91C1A70E77B000920FB /* ic_vidcontrol_fullscreen_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A9051A70E77B000920FB /* ic_vidcontrol_fullscreen_on.png */; };
+		5A14A91D1A70E77B000920FB /* api_tv_scrubber_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A9061A70E77B000920FB /* api_tv_scrubber_background.png */; };
+		5A14A91E1A70E77B000920FB /* api_tv_scrubber_buffer.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A9071A70E77B000920FB /* api_tv_scrubber_buffer.png */; };
+		5A14A91F1A70E77B000920FB /* api_tv_scrubber_progress.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A9081A70E77B000920FB /* api_tv_scrubber_progress.png */; };
+		5A14A9201A70E77B000920FB /* api_scrubber_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A9091A70E77B000920FB /* api_scrubber_selected.png */; };
+		5A14A9211A70E77B000920FB /* api_scrubber_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A90A1A70E77B000920FB /* api_scrubber_selected@2x.png */; };
+		5A14A9221A70E77B000920FB /* ic_vidcontrol_share_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A90B1A70E77B000920FB /* ic_vidcontrol_share_pressed.png */; };
+		5A14A9231A70E77B000920FB /* ic_vidcontrol_share.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A90C1A70E77B000920FB /* ic_vidcontrol_share.png */; };
+		5A14A9241A70E77B000920FB /* ic_vidcontrol_pause_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A90D1A70E77B000920FB /* ic_vidcontrol_pause_pressed.png */; };
+		5A14A9251A70E77B000920FB /* ic_vidcontrol_play_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A90E1A70E77B000920FB /* ic_vidcontrol_play_pressed.png */; };
+		5A14A9261A70E77B000920FB /* ic_vidcontrol_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A90F1A70E77B000920FB /* ic_vidcontrol_play.png */; };
+		5A14A9271A70E77B000920FB /* ic_vidcontrol_collapse_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A9101A70E77B000920FB /* ic_vidcontrol_collapse_pressed.png */; };
+		5A14A9281A70E77B000920FB /* ic_vidcontrol_collapse.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A9111A70E77B000920FB /* ic_vidcontrol_collapse.png */; };
+		5A14A9291A70F350000920FB /* FWSwipePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A14A8E51A70E73B000920FB /* FWSwipePlayerViewController.m */; };
+		5AE27BFD1A71F89A00FF1D8A /* home_btn_next_series.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE27BFC1A71F89A00FF1D8A /* home_btn_next_series.png */; };
+		5AE3EDD31A762D5D00587C50 /* phone_my_main_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE3EDD21A762D5D00587C50 /* phone_my_main_line.png */; };
+		5AE3EDD61A76339C00587C50 /* FWVideoTypeSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE3EDD51A76339C00587C50 /* FWVideoTypeSelectView.m */; };
+		5AEA2A531A7F1AC500A49264 /* mini_middle_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AEA2A521A7F1AC500A49264 /* mini_middle_bg.png */; };
+		5AFC26BD1A723C0E00751DA3 /* FWSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFC26BC1A723C0E00751DA3 /* FWSelectView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5A14A8CA1A70E647000920FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5A14A8A81A70E647000920FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5A14A8AF1A70E647000920FB;
+			remoteInfo = FWDraggableSwipePlayer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5A14A8B01A70E647000920FB /* FWDraggableSwipePlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FWDraggableSwipePlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A14A8B41A70E647000920FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A14A8B51A70E647000920FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5A14A8B71A70E647000920FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5A14A8B81A70E647000920FB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5A14A8BE1A70E647000920FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5A14A8C01A70E647000920FB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5A14A8C31A70E647000920FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		5A14A8C91A70E647000920FB /* FWDraggableSwipePlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FWDraggableSwipePlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A14A8CE1A70E647000920FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A14A8CF1A70E647000920FB /* FWDraggableSwipePlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWDraggableSwipePlayerTests.m; sourceTree = "<group>"; };
+		5A14A8D91A70E701000920FB /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
+		5A14A8DA1A70E701000920FB /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
+		5A14A8DB1A70E701000920FB /* MovieDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailView.h; sourceTree = "<group>"; };
+		5A14A8DC1A70E701000920FB /* MovieDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailView.m; sourceTree = "<group>"; };
+		5A14A8E01A70E73B000920FB /* FWSWipePlayerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWSWipePlayerConfig.h; sourceTree = "<group>"; };
+		5A14A8E11A70E73B000920FB /* FWSWipePlayerConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWSWipePlayerConfig.m; sourceTree = "<group>"; };
+		5A14A8E21A70E73B000920FB /* FWDraggablePlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWDraggablePlayerManager.h; sourceTree = "<group>"; };
+		5A14A8E31A70E73B000920FB /* FWDraggablePlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWDraggablePlayerManager.m; sourceTree = "<group>"; };
+		5A14A8E41A70E73B000920FB /* FWSwipePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWSwipePlayerViewController.h; sourceTree = "<group>"; };
+		5A14A8E51A70E73B000920FB /* FWSwipePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWSwipePlayerViewController.m; sourceTree = "<group>"; };
+		5A14A8E61A70E73B000920FB /* FWSwiperPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWSwiperPlayerController.h; sourceTree = "<group>"; };
+		5A14A8E71A70E73B000920FB /* FWSwiperPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWSwiperPlayerController.m; sourceTree = "<group>"; };
+		5A14A8EA1A70E73B000920FB /* FWSwipePlayerBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWSwipePlayerBackgroundView.h; sourceTree = "<group>"; };
+		5A14A8EB1A70E73B000920FB /* FWSwipePlayerBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWSwipePlayerBackgroundView.m; sourceTree = "<group>"; };
+		5A14A8EC1A70E73B000920FB /* FWPlayerProgressSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPlayerProgressSlider.h; sourceTree = "<group>"; };
+		5A14A8ED1A70E73B000920FB /* FWPlayerProgressSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPlayerProgressSlider.m; sourceTree = "<group>"; };
+		5A14A8EE1A70E73B000920FB /* FWPlayerColorUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWPlayerColorUtil.h; sourceTree = "<group>"; };
+		5A14A8EF1A70E73B000920FB /* FWPlayerColorUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWPlayerColorUtil.m; sourceTree = "<group>"; };
+		5A14A8F81A70E765000920FB /* list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = list.json; sourceTree = "<group>"; };
+		5A14A8FD1A70E77B000920FB /* plugin_fullscreen_bottom_lock_btn_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plugin_fullscreen_bottom_lock_btn_normal.png; sourceTree = "<group>"; };
+		5A14A8FE1A70E77B000920FB /* plugin_fullscreen_bottom_lock_btn_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plugin_fullscreen_bottom_lock_btn_selected.png; sourceTree = "<group>"; };
+		5A14A8FF1A70E77B000920FB /* play_gesture_brightness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_gesture_brightness.png; sourceTree = "<group>"; };
+		5A14A9001A70E77B000920FB /* play_gesture_forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_gesture_forward.png; sourceTree = "<group>"; };
+		5A14A9011A70E77B000920FB /* play_gesture_rewind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_gesture_rewind.png; sourceTree = "<group>"; };
+		5A14A9021A70E77B000920FB /* ic_vidcontrol_fullscreen_off_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_vidcontrol_fullscreen_off_pressed.png; sourceTree = "<group>"; };
+		5A14A9031A70E77B000920FB /* ic_vidcontrol_fullscreen_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_vidcontrol_fullscreen_off.png; sourceTree = "<group>"; };
+		5A14A9041A70E77B000920FB /* ic_vidcontrol_fullscreen_on_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_vidcontrol_fullscreen_on_pressed.png; sourceTree = "<group>"; };
+		5A14A9051A70E77B000920FB /* ic_vidcontrol_fullscreen_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_vidcontrol_fullscreen_on.png; sourceTree = "<group>"; };
+		5A14A9061A70E77B000920FB /* api_tv_scrubber_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = api_tv_scrubber_background.png; sourceTree = "<group>"; };
+		5A14A9071A70E77B000920FB /* api_tv_scrubber_buffer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = api_tv_scrubber_buffer.png; sourceTree = "<group>"; };
+		5A14A9081A70E77B000920FB /* api_tv_scrubber_progress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = api_tv_scrubber_progress.png; sourceTree = "<group>"; };
+		5A14A9091A70E77B000920FB /* api_scrubber_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = api_scrubber_selected.png; sourceTree = "<group>"; };
+		5A14A90A1A70E77B000920FB /* api_scrubber_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "api_scrubber_selected@2x.png"; sourceTree = "<group>"; };
+		5A14A90B1A70E77B000920FB /* ic_vidcontrol_share_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_vidcontrol_share_pressed.png; sourceTree = "<group>"; };
+		5A14A90C1A70E77B000920FB /* ic_vidcontrol_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_vidcontrol_share.png; sourceTree = "<group>"; };
+		5A14A90D1A70E77B000920FB /* ic_vidcontrol_pause_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_vidcontrol_pause_pressed.png; sourceTree = "<group>"; };
+		5A14A90E1A70E77B000920FB /* ic_vidcontrol_play_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_vidcontrol_play_pressed.png; sourceTree = "<group>"; };
+		5A14A90F1A70E77B000920FB /* ic_vidcontrol_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_vidcontrol_play.png; sourceTree = "<group>"; };
+		5A14A9101A70E77B000920FB /* ic_vidcontrol_collapse_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_vidcontrol_collapse_pressed.png; sourceTree = "<group>"; };
+		5A14A9111A70E77B000920FB /* ic_vidcontrol_collapse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_vidcontrol_collapse.png; sourceTree = "<group>"; };
+		5AE27BFC1A71F89A00FF1D8A /* home_btn_next_series.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_btn_next_series.png; sourceTree = "<group>"; };
+		5AE3EDD21A762D5D00587C50 /* phone_my_main_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone_my_main_line.png; sourceTree = "<group>"; };
+		5AE3EDD41A76339C00587C50 /* FWVideoTypeSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWVideoTypeSelectView.h; sourceTree = "<group>"; };
+		5AE3EDD51A76339C00587C50 /* FWVideoTypeSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWVideoTypeSelectView.m; sourceTree = "<group>"; };
+		5AEA2A521A7F1AC500A49264 /* mini_middle_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mini_middle_bg.png; sourceTree = "<group>"; };
+		5AFC26BB1A723C0E00751DA3 /* FWSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWSelectView.h; sourceTree = "<group>"; };
+		5AFC26BC1A723C0E00751DA3 /* FWSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWSelectView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5A14A8AD1A70E647000920FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A14A8C61A70E647000920FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5A14A8A71A70E647000920FB = {
+			isa = PBXGroup;
+			children = (
+				5A14A8B21A70E647000920FB /* FWDraggableSwipePlayer */,
+				5A14A8CC1A70E647000920FB /* FWDraggableSwipePlayerTests */,
+				5A14A8B11A70E647000920FB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5A14A8B11A70E647000920FB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5A14A8B01A70E647000920FB /* FWDraggableSwipePlayer.app */,
+				5A14A8C91A70E647000920FB /* FWDraggableSwipePlayerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5A14A8B21A70E647000920FB /* FWDraggableSwipePlayer */ = {
+			isa = PBXGroup;
+			children = (
+				5A14A8FA1A70E76C000920FB /* image */,
+				5A14A8DF1A70E721000920FB /* Player */,
+				5A14A8B71A70E647000920FB /* AppDelegate.h */,
+				5A14A8B81A70E647000920FB /* AppDelegate.m */,
+				5A14A8D91A70E701000920FB /* DemoViewController.h */,
+				5A14A8DA1A70E701000920FB /* DemoViewController.m */,
+				5A14A8DB1A70E701000920FB /* MovieDetailView.h */,
+				5A14A8DC1A70E701000920FB /* MovieDetailView.m */,
+				5A14A8BD1A70E647000920FB /* Main.storyboard */,
+				5A14A8C01A70E647000920FB /* Images.xcassets */,
+				5A14A8C21A70E647000920FB /* LaunchScreen.xib */,
+				5A14A8B31A70E647000920FB /* Supporting Files */,
+			);
+			path = FWDraggableSwipePlayer;
+			sourceTree = "<group>";
+		};
+		5A14A8B31A70E647000920FB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5A14A8F81A70E765000920FB /* list.json */,
+				5A14A8B41A70E647000920FB /* Info.plist */,
+				5A14A8B51A70E647000920FB /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5A14A8CC1A70E647000920FB /* FWDraggableSwipePlayerTests */ = {
+			isa = PBXGroup;
+			children = (
+				5A14A8CF1A70E647000920FB /* FWDraggableSwipePlayerTests.m */,
+				5A14A8CD1A70E647000920FB /* Supporting Files */,
+			);
+			path = FWDraggableSwipePlayerTests;
+			sourceTree = "<group>";
+		};
+		5A14A8CD1A70E647000920FB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5A14A8CE1A70E647000920FB /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5A14A8DF1A70E721000920FB /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				5A14A8E01A70E73B000920FB /* FWSWipePlayerConfig.h */,
+				5A14A8E11A70E73B000920FB /* FWSWipePlayerConfig.m */,
+				5A14A8E21A70E73B000920FB /* FWDraggablePlayerManager.h */,
+				5A14A8E31A70E73B000920FB /* FWDraggablePlayerManager.m */,
+				5A14A8E41A70E73B000920FB /* FWSwipePlayerViewController.h */,
+				5A14A8E51A70E73B000920FB /* FWSwipePlayerViewController.m */,
+				5A14A8E61A70E73B000920FB /* FWSwiperPlayerController.h */,
+				5A14A8E71A70E73B000920FB /* FWSwiperPlayerController.m */,
+				5A14A8EA1A70E73B000920FB /* FWSwipePlayerBackgroundView.h */,
+				5A14A8EB1A70E73B000920FB /* FWSwipePlayerBackgroundView.m */,
+				5A14A8EC1A70E73B000920FB /* FWPlayerProgressSlider.h */,
+				5A14A8ED1A70E73B000920FB /* FWPlayerProgressSlider.m */,
+				5A14A8EE1A70E73B000920FB /* FWPlayerColorUtil.h */,
+				5A14A8EF1A70E73B000920FB /* FWPlayerColorUtil.m */,
+				5AFC26BB1A723C0E00751DA3 /* FWSelectView.h */,
+				5AFC26BC1A723C0E00751DA3 /* FWSelectView.m */,
+				5AE3EDD41A76339C00587C50 /* FWVideoTypeSelectView.h */,
+				5AE3EDD51A76339C00587C50 /* FWVideoTypeSelectView.m */,
+			);
+			name = Player;
+			sourceTree = "<group>";
+		};
+		5A14A8FA1A70E76C000920FB /* image */ = {
+			isa = PBXGroup;
+			children = (
+				5AEA2A521A7F1AC500A49264 /* mini_middle_bg.png */,
+				5AE3EDD21A762D5D00587C50 /* phone_my_main_line.png */,
+				5AE27BFC1A71F89A00FF1D8A /* home_btn_next_series.png */,
+				5A14A8FD1A70E77B000920FB /* plugin_fullscreen_bottom_lock_btn_normal.png */,
+				5A14A8FE1A70E77B000920FB /* plugin_fullscreen_bottom_lock_btn_selected.png */,
+				5A14A8FF1A70E77B000920FB /* play_gesture_brightness.png */,
+				5A14A9001A70E77B000920FB /* play_gesture_forward.png */,
+				5A14A9011A70E77B000920FB /* play_gesture_rewind.png */,
+				5A14A9021A70E77B000920FB /* ic_vidcontrol_fullscreen_off_pressed.png */,
+				5A14A9031A70E77B000920FB /* ic_vidcontrol_fullscreen_off.png */,
+				5A14A9041A70E77B000920FB /* ic_vidcontrol_fullscreen_on_pressed.png */,
+				5A14A9051A70E77B000920FB /* ic_vidcontrol_fullscreen_on.png */,
+				5A14A9061A70E77B000920FB /* api_tv_scrubber_background.png */,
+				5A14A9071A70E77B000920FB /* api_tv_scrubber_buffer.png */,
+				5A14A9081A70E77B000920FB /* api_tv_scrubber_progress.png */,
+				5A14A9091A70E77B000920FB /* api_scrubber_selected.png */,
+				5A14A90A1A70E77B000920FB /* api_scrubber_selected@2x.png */,
+				5A14A90B1A70E77B000920FB /* ic_vidcontrol_share_pressed.png */,
+				5A14A90C1A70E77B000920FB /* ic_vidcontrol_share.png */,
+				5A14A90D1A70E77B000920FB /* ic_vidcontrol_pause_pressed.png */,
+				5A14A90E1A70E77B000920FB /* ic_vidcontrol_play_pressed.png */,
+				5A14A90F1A70E77B000920FB /* ic_vidcontrol_play.png */,
+				5A14A9101A70E77B000920FB /* ic_vidcontrol_collapse_pressed.png */,
+				5A14A9111A70E77B000920FB /* ic_vidcontrol_collapse.png */,
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5A14A8AF1A70E647000920FB /* FWDraggableSwipePlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A14A8D31A70E647000920FB /* Build configuration list for PBXNativeTarget "FWDraggableSwipePlayer" */;
+			buildPhases = (
+				5A14A8AC1A70E647000920FB /* Sources */,
+				5A14A8AD1A70E647000920FB /* Frameworks */,
+				5A14A8AE1A70E647000920FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FWDraggableSwipePlayer;
+			productName = FWDraggableSwipePlayer;
+			productReference = 5A14A8B01A70E647000920FB /* FWDraggableSwipePlayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5A14A8C81A70E647000920FB /* FWDraggableSwipePlayerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A14A8D61A70E647000920FB /* Build configuration list for PBXNativeTarget "FWDraggableSwipePlayerTests" */;
+			buildPhases = (
+				5A14A8C51A70E647000920FB /* Sources */,
+				5A14A8C61A70E647000920FB /* Frameworks */,
+				5A14A8C71A70E647000920FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5A14A8CB1A70E647000920FB /* PBXTargetDependency */,
+			);
+			name = FWDraggableSwipePlayerTests;
+			productName = FWDraggableSwipePlayerTests;
+			productReference = 5A14A8C91A70E647000920FB /* FWDraggableSwipePlayerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5A14A8A81A70E647000920FB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Filly Wang";
+				TargetAttributes = {
+					5A14A8AF1A70E647000920FB = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					5A14A8C81A70E647000920FB = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 5A14A8AF1A70E647000920FB;
+					};
+				};
+			};
+			buildConfigurationList = 5A14A8AB1A70E647000920FB /* Build configuration list for PBXProject "FWDraggableSwipePlayer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5A14A8A71A70E647000920FB;
+			productRefGroup = 5A14A8B11A70E647000920FB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5A14A8AF1A70E647000920FB /* FWDraggableSwipePlayer */,
+				5A14A8C81A70E647000920FB /* FWDraggableSwipePlayerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5A14A8AE1A70E647000920FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A14A91C1A70E77B000920FB /* ic_vidcontrol_fullscreen_on.png in Resources */,
+				5A14A91B1A70E77B000920FB /* ic_vidcontrol_fullscreen_on_pressed.png in Resources */,
+				5A14A9251A70E77B000920FB /* ic_vidcontrol_play_pressed.png in Resources */,
+				5A14A9281A70E77B000920FB /* ic_vidcontrol_collapse.png in Resources */,
+				5A14A9211A70E77B000920FB /* api_scrubber_selected@2x.png in Resources */,
+				5A14A91A1A70E77B000920FB /* ic_vidcontrol_fullscreen_off.png in Resources */,
+				5A14A9151A70E77B000920FB /* plugin_fullscreen_bottom_lock_btn_selected.png in Resources */,
+				5A14A91F1A70E77B000920FB /* api_tv_scrubber_progress.png in Resources */,
+				5A14A91E1A70E77B000920FB /* api_tv_scrubber_buffer.png in Resources */,
+				5A14A9241A70E77B000920FB /* ic_vidcontrol_pause_pressed.png in Resources */,
+				5AE27BFD1A71F89A00FF1D8A /* home_btn_next_series.png in Resources */,
+				5A14A8BF1A70E647000920FB /* Main.storyboard in Resources */,
+				5A14A9191A70E77B000920FB /* ic_vidcontrol_fullscreen_off_pressed.png in Resources */,
+				5A14A8F91A70E765000920FB /* list.json in Resources */,
+				5A14A9271A70E77B000920FB /* ic_vidcontrol_collapse_pressed.png in Resources */,
+				5A14A9231A70E77B000920FB /* ic_vidcontrol_share.png in Resources */,
+				5AEA2A531A7F1AC500A49264 /* mini_middle_bg.png in Resources */,
+				5A14A9161A70E77B000920FB /* play_gesture_brightness.png in Resources */,
+				5A14A9261A70E77B000920FB /* ic_vidcontrol_play.png in Resources */,
+				5A14A8C41A70E647000920FB /* LaunchScreen.xib in Resources */,
+				5A14A9221A70E77B000920FB /* ic_vidcontrol_share_pressed.png in Resources */,
+				5A14A91D1A70E77B000920FB /* api_tv_scrubber_background.png in Resources */,
+				5A14A9171A70E77B000920FB /* play_gesture_forward.png in Resources */,
+				5A14A9181A70E77B000920FB /* play_gesture_rewind.png in Resources */,
+				5AE3EDD31A762D5D00587C50 /* phone_my_main_line.png in Resources */,
+				5A14A9141A70E77B000920FB /* plugin_fullscreen_bottom_lock_btn_normal.png in Resources */,
+				5A14A8C11A70E647000920FB /* Images.xcassets in Resources */,
+				5A14A9201A70E77B000920FB /* api_scrubber_selected.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A14A8C71A70E647000920FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5A14A8AC1A70E647000920FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A14A8F71A70E73B000920FB /* FWPlayerColorUtil.m in Sources */,
+				5A14A9291A70F350000920FB /* FWSwipePlayerViewController.m in Sources */,
+				5A14A8F01A70E73B000920FB /* FWSWipePlayerConfig.m in Sources */,
+				5AFC26BD1A723C0E00751DA3 /* FWSelectView.m in Sources */,
+				5A14A8DE1A70E701000920FB /* MovieDetailView.m in Sources */,
+				5A14A8B91A70E647000920FB /* AppDelegate.m in Sources */,
+				5A14A8F51A70E73B000920FB /* FWSwipePlayerBackgroundView.m in Sources */,
+				5A14A8B61A70E647000920FB /* main.m in Sources */,
+				5A14A8F31A70E73B000920FB /* FWSwiperPlayerController.m in Sources */,
+				5AE3EDD61A76339C00587C50 /* FWVideoTypeSelectView.m in Sources */,
+				5A14A8F11A70E73B000920FB /* FWDraggablePlayerManager.m in Sources */,
+				5A14A8F61A70E73B000920FB /* FWPlayerProgressSlider.m in Sources */,
+				5A14A8DD1A70E701000920FB /* DemoViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A14A8C51A70E647000920FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A14A8D01A70E647000920FB /* FWDraggableSwipePlayerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5A14A8CB1A70E647000920FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5A14A8AF1A70E647000920FB /* FWDraggableSwipePlayer */;
+			targetProxy = 5A14A8CA1A70E647000920FB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5A14A8BD1A70E647000920FB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A14A8BE1A70E647000920FB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5A14A8C21A70E647000920FB /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A14A8C31A70E647000920FB /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5A14A8D11A70E647000920FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5A14A8D21A70E647000920FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5A14A8D41A70E647000920FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FWDraggableSwipePlayer",
+				);
+				INFOPLIST_FILE = FWDraggableSwipePlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5A14A8D51A70E647000920FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FWDraggableSwipePlayer",
+				);
+				INFOPLIST_FILE = FWDraggableSwipePlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5A14A8D71A70E647000920FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FWDraggableSwipePlayerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FWDraggableSwipePlayer.app/FWDraggableSwipePlayer";
+			};
+			name = Debug;
+		};
+		5A14A8D81A70E647000920FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FWDraggableSwipePlayerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FWDraggableSwipePlayer.app/FWDraggableSwipePlayer";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5A14A8AB1A70E647000920FB /* Build configuration list for PBXProject "FWDraggableSwipePlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A14A8D11A70E647000920FB /* Debug */,
+				5A14A8D21A70E647000920FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A14A8D31A70E647000920FB /* Build configuration list for PBXNativeTarget "FWDraggableSwipePlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A14A8D41A70E647000920FB /* Debug */,
+				5A14A8D51A70E647000920FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A14A8D61A70E647000920FB /* Build configuration list for PBXNativeTarget "FWDraggableSwipePlayerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A14A8D71A70E647000920FB /* Debug */,
+				5A14A8D81A70E647000920FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5A14A8A81A70E647000920FB /* Project object */;
+}

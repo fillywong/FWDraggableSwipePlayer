@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>53AF1C86-BBF0-4CD4-A893-91C65E3467FC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>FWDraggableSwipePlayer</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5A70A6FCF3624CD383520F4BB23C57DEA92FC643</key>
+		<string>https://bitbucket.org/tvb/myvod_ios.git</string>
+		<key>C687E799656C451799B3094E17F8DE483B6327CA</key>
+		<string>https://github.com/fillywong/FWDraggableSwipePlayer</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>FWDraggableSwipePlayerDemo/FWDraggableSwipePlayer.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5A70A6FCF3624CD383520F4BB23C57DEA92FC643</key>
+		<string>../../../../tvb/gotvs/myvod_ios</string>
+		<key>C687E799656C451799B3094E17F8DE483B6327CA</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/fillywong/FWDraggableSwipePlayer</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C687E799656C451799B3094E17F8DE483B6327CA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C687E799656C451799B3094E17F8DE483B6327CA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>git</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5A70A6FCF3624CD383520F4BB23C57DEA92FC643</string>
+			<key>IDESourceControlWCCName</key>
+			<string>myvod_ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>

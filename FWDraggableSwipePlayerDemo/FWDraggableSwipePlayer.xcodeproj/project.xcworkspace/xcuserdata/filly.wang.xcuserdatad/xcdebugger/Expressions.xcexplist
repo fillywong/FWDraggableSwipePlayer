@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "main:main.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[FWSwiperPlayerController monitorPlaybackTime]:FWSwiperPlayerController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.duration">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[DemoViewController viewDidLoad]:DemoViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "list[i]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

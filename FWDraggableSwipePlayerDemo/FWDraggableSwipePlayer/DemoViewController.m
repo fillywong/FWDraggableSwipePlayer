@@ -71,7 +71,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    /*
+    
     if(self.playerManager == nil)
     {
         FWSWipePlayerConfig *config = [[FWSWipePlayerConfig alloc]init];
@@ -98,28 +98,28 @@
     //*/
     // method 2
     ///*
-    playerController =  [[FWSwipePlayerViewController alloc]init];
-    FWSWipePlayerConfig *config = [[FWSWipePlayerConfig alloc]init];
-    config.draggable = NO;
-    NSMutableArray *dataList = [[NSMutableArray alloc]init] ;
-    int index = [indexPath row];
-    for(int i = index ; i < [list count]; ++i)
-    {
-        [dataList addObject:list[i]];
-    }
-    [playerController updateMoviePlayerWithVideoList:dataList Config:config];
-    
-    //playerController.moviePlayer.delegate = self;
-    [self.view addSubview:playerController.view];
-    [playerController.moviePlayer prepareToPlay];
-    [playerController.moviePlayer playStartAt:200];
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleSwipePlayerViewStateChange:)
-                                                 name:FWSwipePlayerViewStateChange object:nil];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:FWSwipePlayerViewStateChange object:self userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:NO],@"isSmall",[NSNumber numberWithBool:NO],@"isLock",nil] ];
+//    
+//    playerController =  [[FWSwipePlayerViewController alloc]init];
+//    FWSWipePlayerConfig *config = [[FWSWipePlayerConfig alloc]init];
+//    
+//    NSMutableArray *dataList = [[NSMutableArray alloc]init] ;
+//    
+//    for(int i = (int)[indexPath row] ; i < [list count]; ++i)
+//    {
+//        [dataList addObject:list[i]];
+//    }
+//    
+//    [playerController updateMoviePlayerWithVideoList:dataList Config:config];
+//    playerController.moviePlayer.delegate = self;
+//    [playerController attachTo:self];
+//    [playerController playStartAt:200];
+//    self.listView.frame = CGRectMake(0, playerController.moviePlayer.view.frame.size.height, self.listView.frame.size.width, self.view.frame.size.height - playerController.moviePlayer.view.frame.size.height);
+//    
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(handleSwipePlayerViewStateChange:)
+//                                                 name:FWSwipePlayerViewStateChange object:nil];
+//    
+//    [[NSNotificationCenter defaultCenter] postNotificationName:FWSwipePlayerViewStateChange object:self userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:NO],@"isSmall",[NSNumber numberWithBool:NO],@"isLock",nil] ];
     //*/
 }
 

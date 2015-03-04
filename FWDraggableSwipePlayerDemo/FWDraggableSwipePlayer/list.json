@@ -1,8 +1,8 @@
 [
 {
-"title": "video1",
+"title": "adaptive m3u8",
 "desc": "This is a presentation data 1",
-"url": "http://techslides.com/demos/sample-videos/small.mp4",
+"url": "https://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8",
  "subtitles": [
                {
                "lang": "tc"

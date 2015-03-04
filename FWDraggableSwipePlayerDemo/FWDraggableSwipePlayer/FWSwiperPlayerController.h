@@ -76,4 +76,6 @@ typedef enum _FWPlayerMoveState {
 
 - (void)playStartAt:(NSTimeInterval)time;
 
+- (void)attachTo:(UIViewController*)controller;
+
 @end

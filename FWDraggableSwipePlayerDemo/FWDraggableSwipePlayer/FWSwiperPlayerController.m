@@ -84,6 +84,8 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     NSArray *videoList;
     
     UIPanGestureRecognizer *swipeRecognizer;
+    
+    UIViewController * attachViewController;
 }
 @end
 
@@ -153,6 +155,8 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     else
         return [self initWithContentURL:[NSURL URLWithString: @"http://techslides.com/demos/sample-videos/small.mp4"] andConfig:[[FWSWipePlayerConfig alloc]init]];
 }
+
+
 
 - (void)configControls {
     [self initMoviePlayer];
@@ -1082,7 +1086,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
         [[NSNotificationCenter defaultCenter] removeObserver:self
                                                         name:MPMoviePlayerLoadStateDidChangeNotification
                                                       object:nil];
-        
+        [attachViewController.view addSubview:self.view];
         [self play];
     } else
         [self stop];
@@ -1223,6 +1227,11 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:FWSwipePlayerViewStateChange
                                                   object:nil];
+}
+
+- (void)attachTo:(UIViewController*)controller
+{
+    attachViewController = controller;
 }
 
 #pragma mark UIGestureRecognizerDelegate

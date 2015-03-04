@@ -13,6 +13,8 @@
     NSDictionary *infoDict;
     FWSWipePlayerConfig *config;
     NSArray *dataList;
+    
+    UIViewController *attachViewController;
 }
 
 @end
@@ -68,10 +70,23 @@
     [self.view addSubview: self.moviePlayer.view];
 }
 
+- (void)attachTo:(UIViewController*)viewController
+{
+    attachViewController = viewController;
+    [attachViewController.view addSubview:self.moviePlayer.view];
+    [self.moviePlayer attachTo:attachViewController];
+}
+
+- (void)playStartAt:(NSTimeInterval)time
+{
+    [self.moviePlayer playStartAt:time];
+}
 
 -(NSUInteger)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskAll;
 }
+
+
 
 
 @end

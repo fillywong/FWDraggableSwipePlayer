@@ -12,7 +12,7 @@
 
 extern NSString *FWSwipePlayerViewStateChange;
 
-@interface DemoViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface DemoViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, FWPlayerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *listView;
 @property (nonatomic, strong) FWDraggablePlayerManager *playerManager;

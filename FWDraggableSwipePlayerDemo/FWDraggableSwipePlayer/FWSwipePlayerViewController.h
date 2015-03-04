@@ -15,5 +15,8 @@
 
 - (void)updateMoviePlayerWithInfo:(NSDictionary * )dict Config:(FWSWipePlayerConfig*)config;
 - (void)updateMoviePlayerWithVideoList:(NSArray * )list Config:(FWSWipePlayerConfig*)configuration;
+- (void)attachTo:(UIViewController*)viewController;
+
+- (void)playStartAt:(NSTimeInterval)time;
 
 @end

@@ -1,0 +1,36 @@
+/* 
+  Localizable.strings
+  FWDraggableSwipePlayer
+
+  Created by Filly Wang on 5/3/15.
+  Copyright (c) 2015 Filly Wang. All rights reserved.
+*/
+"no_network" = "Due to Bad Network Connection. It loads slowly or has bad video quality";
+"pause" = "Pause";
+"play" = "Play";
+"share" = "Share the Momnet";
+"setting" = "video Settings";
+"chaptermark" = "Chapter Marks";
+"nextplay" = "Auto play:";
+"quality" = "Quality";
+"channel" = "Audio";
+"episode" = "Episode";
+"subtitle" = "Subtitle";
+"done" = "DONE";
+"loading" = "Loading....";
+"hd" = "HD";
+"sd" = "SD";
+"english" = "English";
+"cantonese" = "Cantonese";
+"mandarin" = "Mandarin";
+"simplified" = "简中";
+"traditional" = "繁中";
+"sharebtn" = "Share th Moment";
+"settingbtn" = "Video Settings";
+"chaptermarkbtn" = "Chapter Marks";
+"Cantonese" = "Cantonese";
+"mandarin" = "Mandarin";
+"tc" = "Traditional";
+"en" = "English";
+"adDetailbtnText" = "Learn More";
+"lightness" = "Lightness";

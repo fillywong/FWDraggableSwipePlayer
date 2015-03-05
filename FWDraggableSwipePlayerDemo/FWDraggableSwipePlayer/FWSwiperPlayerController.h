@@ -11,8 +11,6 @@
 #import "FWPlayerColorUtil.h"
 #import "FWPlayerProgressSlider.h"
 #import "FWSWipePlayerConfig.h"
-#import "FWSelectView.h"
-#import "FWVideoTypeSelectView.h"
 
 extern NSString *FWSwipePlayerLockBtnOnclick;
 extern NSString *FWSwipePlayerShareBtnOnclick;
@@ -26,6 +24,9 @@ extern NSString *FWSwipePlayerOnTap;
 extern NSString *FWSwipePlayerSubtitleBtnOnclick;
 extern NSString *FWSwipePlayerChannelBtnOnclick;
 extern NSString *FWSwipePlayerViewStateChange;
+extern NSString *FWSwipePlayerSettingBtnOnclick;
+extern NSString *FWSwipePlayerDoneBtnOnclick;
+extern NSString *FWSwipePlayerSettingViewCloseBtnOnclick;
 
 typedef enum _FWPlayerMoveState {
     FWPlayerMoveNone = 0,
@@ -50,6 +51,8 @@ typedef enum _FWPlayerMoveState {
 - (void)channelBtnOnClick:(id)sender;
 - (void)didFinishPlay:(NSURL*)url;
 - (void)doneBtnOnClick:(id)sender;
+- (void)settingBtnOnClick:(id)sender;
+- (void)settingViewCloseBtnOnClick:(id)sender;
 
 @end
 

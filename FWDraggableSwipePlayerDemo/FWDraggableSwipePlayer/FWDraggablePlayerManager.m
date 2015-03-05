@@ -464,6 +464,10 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
 {
     [self.playerController stopAndRemove];
     self.playerController = nil;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIDeviceOrientationDidChangeNotification
+                                                  object:nil];
 }
 
 #pragma player delegate

@@ -46,9 +46,9 @@
 		5A14A9291A70F350000920FB /* FWSwipePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A14A8E51A70E73B000920FB /* FWSwipePlayerViewController.m */; };
 		5AE27BFD1A71F89A00FF1D8A /* home_btn_next_series.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE27BFC1A71F89A00FF1D8A /* home_btn_next_series.png */; };
 		5AE3EDD31A762D5D00587C50 /* phone_my_main_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE3EDD21A762D5D00587C50 /* phone_my_main_line.png */; };
-		5AE3EDD61A76339C00587C50 /* FWVideoTypeSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE3EDD51A76339C00587C50 /* FWVideoTypeSelectView.m */; };
+		5AE68F271AA832A8006861AD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5AE68F291AA832A8006861AD /* Localizable.strings */; };
+		5AE68F351AA8408B006861AD /* btn_player_setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE68F341AA8408B006861AD /* btn_player_setting.png */; };
 		5AEA2A531A7F1AC500A49264 /* mini_middle_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AEA2A521A7F1AC500A49264 /* mini_middle_bg.png */; };
-		5AFC26BD1A723C0E00751DA3 /* FWSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFC26BC1A723C0E00751DA3 /* FWSelectView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,11 +115,16 @@
 		5A14A9111A70E77B000920FB /* ic_vidcontrol_collapse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_vidcontrol_collapse.png; sourceTree = "<group>"; };
 		5AE27BFC1A71F89A00FF1D8A /* home_btn_next_series.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_btn_next_series.png; sourceTree = "<group>"; };
 		5AE3EDD21A762D5D00587C50 /* phone_my_main_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone_my_main_line.png; sourceTree = "<group>"; };
-		5AE3EDD41A76339C00587C50 /* FWVideoTypeSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWVideoTypeSelectView.h; sourceTree = "<group>"; };
-		5AE3EDD51A76339C00587C50 /* FWVideoTypeSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWVideoTypeSelectView.m; sourceTree = "<group>"; };
+		5AE68F281AA832A8006861AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5AE68F2A1AA832B6006861AD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		5AE68F2B1AA832B6006861AD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		5AE68F2C1AA832B6006861AD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		5AE68F2D1AA832BA006861AD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		5AE68F2E1AA832BA006861AD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		5AE68F2F1AA832BB006861AD /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		5AE68F341AA8408B006861AD /* btn_player_setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_player_setting.png; sourceTree = "<group>"; };
+		5AE68F361AA84A3C006861AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5AEA2A521A7F1AC500A49264 /* mini_middle_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mini_middle_bg.png; sourceTree = "<group>"; };
-		5AFC26BB1A723C0E00751DA3 /* FWSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FWSelectView.h; sourceTree = "<group>"; };
-		5AFC26BC1A723C0E00751DA3 /* FWSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FWSelectView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +188,7 @@
 				5A14A8F81A70E765000920FB /* list.json */,
 				5A14A8B41A70E647000920FB /* Info.plist */,
 				5A14A8B51A70E647000920FB /* main.m */,
+				5AE68F291AA832A8006861AD /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -207,6 +213,7 @@
 		5A14A8DF1A70E721000920FB /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				5AE68F301AA83312006861AD /* Utility */,
 				5A14A8E01A70E73B000920FB /* FWSWipePlayerConfig.h */,
 				5A14A8E11A70E73B000920FB /* FWSWipePlayerConfig.m */,
 				5A14A8E21A70E73B000920FB /* FWDraggablePlayerManager.h */,
@@ -219,12 +226,6 @@
 				5A14A8EB1A70E73B000920FB /* FWSwipePlayerBackgroundView.m */,
 				5A14A8EC1A70E73B000920FB /* FWPlayerProgressSlider.h */,
 				5A14A8ED1A70E73B000920FB /* FWPlayerProgressSlider.m */,
-				5A14A8EE1A70E73B000920FB /* FWPlayerColorUtil.h */,
-				5A14A8EF1A70E73B000920FB /* FWPlayerColorUtil.m */,
-				5AFC26BB1A723C0E00751DA3 /* FWSelectView.h */,
-				5AFC26BC1A723C0E00751DA3 /* FWSelectView.m */,
-				5AE3EDD41A76339C00587C50 /* FWVideoTypeSelectView.h */,
-				5AE3EDD51A76339C00587C50 /* FWVideoTypeSelectView.m */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -232,6 +233,7 @@
 		5A14A8FA1A70E76C000920FB /* image */ = {
 			isa = PBXGroup;
 			children = (
+				5AE68F341AA8408B006861AD /* btn_player_setting.png */,
 				5AEA2A521A7F1AC500A49264 /* mini_middle_bg.png */,
 				5AE3EDD21A762D5D00587C50 /* phone_my_main_line.png */,
 				5AE27BFC1A71F89A00FF1D8A /* home_btn_next_series.png */,
@@ -258,6 +260,15 @@
 				5A14A9111A70E77B000920FB /* ic_vidcontrol_collapse.png */,
 			);
 			name = image;
+			sourceTree = "<group>";
+		};
+		5AE68F301AA83312006861AD /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				5A14A8EE1A70E73B000920FB /* FWPlayerColorUtil.h */,
+				5A14A8EF1A70E73B000920FB /* FWPlayerColorUtil.m */,
+			);
+			name = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,6 +334,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 5A14A8A71A70E647000920FB;
 			productRefGroup = 5A14A8B11A70E647000920FB /* Products */;
@@ -340,6 +353,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AE68F351AA8408B006861AD /* btn_player_setting.png in Resources */,
 				5A14A91C1A70E77B000920FB /* ic_vidcontrol_fullscreen_on.png in Resources */,
 				5A14A91B1A70E77B000920FB /* ic_vidcontrol_fullscreen_on_pressed.png in Resources */,
 				5A14A9251A70E77B000920FB /* ic_vidcontrol_play_pressed.png in Resources */,
@@ -362,6 +376,7 @@
 				5A14A8C41A70E647000920FB /* LaunchScreen.xib in Resources */,
 				5A14A9221A70E77B000920FB /* ic_vidcontrol_share_pressed.png in Resources */,
 				5A14A91D1A70E77B000920FB /* api_tv_scrubber_background.png in Resources */,
+				5AE68F271AA832A8006861AD /* Localizable.strings in Resources */,
 				5A14A9171A70E77B000920FB /* play_gesture_forward.png in Resources */,
 				5A14A9181A70E77B000920FB /* play_gesture_rewind.png in Resources */,
 				5AE3EDD31A762D5D00587C50 /* phone_my_main_line.png in Resources */,
@@ -388,13 +403,11 @@
 				5A14A8F71A70E73B000920FB /* FWPlayerColorUtil.m in Sources */,
 				5A14A9291A70F350000920FB /* FWSwipePlayerViewController.m in Sources */,
 				5A14A8F01A70E73B000920FB /* FWSWipePlayerConfig.m in Sources */,
-				5AFC26BD1A723C0E00751DA3 /* FWSelectView.m in Sources */,
 				5A14A8DE1A70E701000920FB /* MovieDetailView.m in Sources */,
 				5A14A8B91A70E647000920FB /* AppDelegate.m in Sources */,
 				5A14A8F51A70E73B000920FB /* FWSwipePlayerBackgroundView.m in Sources */,
 				5A14A8B61A70E647000920FB /* main.m in Sources */,
 				5A14A8F31A70E73B000920FB /* FWSwiperPlayerController.m in Sources */,
-				5AE3EDD61A76339C00587C50 /* FWVideoTypeSelectView.m in Sources */,
 				5A14A8F11A70E73B000920FB /* FWDraggablePlayerManager.m in Sources */,
 				5A14A8F61A70E73B000920FB /* FWPlayerProgressSlider.m in Sources */,
 				5A14A8DD1A70E701000920FB /* DemoViewController.m in Sources */,
@@ -424,6 +437,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				5A14A8BE1A70E647000920FB /* Base */,
+				5AE68F2A1AA832B6006861AD /* zh-Hans */,
+				5AE68F2D1AA832BA006861AD /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -432,8 +447,21 @@
 			isa = PBXVariantGroup;
 			children = (
 				5A14A8C31A70E647000920FB /* Base */,
+				5AE68F2B1AA832B6006861AD /* zh-Hans */,
+				5AE68F2E1AA832BA006861AD /* zh-Hant */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		5AE68F291AA832A8006861AD /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AE68F281AA832A8006861AD /* en */,
+				5AE68F2C1AA832B6006861AD /* zh-Hans */,
+				5AE68F2F1AA832BB006861AD /* zh-Hant */,
+				5AE68F361AA84A3C006861AD /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

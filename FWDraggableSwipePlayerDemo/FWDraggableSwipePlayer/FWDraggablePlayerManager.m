@@ -7,7 +7,7 @@
 //
 
 #import "FWDraggablePlayerManager.h"
-
+#import "MovieDetailView.h"
 #define ANIMATION_TIME 0.2f
 
 NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
@@ -18,6 +18,7 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
     FWSWipePlayerConfig *config;
     
     UIView* rootView;
+    
     
     UIPanGestureRecognizer *dragRecognizer;
     UIPanGestureRecognizer *swipeRecognizer;
@@ -140,10 +141,11 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
 {
     if(self.detailView == nil)
     {
-        self.detailView = [[UIView alloc]init];
+        self.detailView = [[MovieDetailView alloc]init];
+        [self.detailView initWithInfo:infoDict];
         self.detailView.backgroundColor = [UIColor whiteColor];
     }
-    [self.detailView setFrame:CGRectMake(0, config.topPlayerHeight, rootView.frame.size.width, rootView.frame.size.height - config.topPlayerHeight)];
+    [self.detailView updateFrame:CGRectMake(0, config.topPlayerHeight, rootView.frame.size.width, rootView.frame.size.height - config.topPlayerHeight)];
     [self.detailView setAlpha:1];
     
     [self.playerController.view addSubview:self.detailView];
@@ -456,6 +458,12 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
     NSLog(@"isAnimation %d\n",isAnimation);
     NSLog(@"isVertical %d\n", isVertical);
     NSLog(@"isHorizontal %d\n", isHorizontal);
+}
+
+- (void)exit
+{
+    [self.playerController stopAndRemove];
+    self.playerController = nil;
 }
 
 #pragma player delegate

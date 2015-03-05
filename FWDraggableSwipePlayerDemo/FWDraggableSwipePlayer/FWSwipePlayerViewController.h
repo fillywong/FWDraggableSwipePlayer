@@ -19,4 +19,6 @@
 
 - (void)playStartAt:(NSTimeInterval)time;
 
+-(void)stopAndRemove;
+
 @end

@@ -86,7 +86,9 @@
     return UIInterfaceOrientationMaskAll;
 }
 
-
-
+-(void)stopAndRemove
+{
+    [self.moviePlayer stopAndRemove];
+}
 
 @end

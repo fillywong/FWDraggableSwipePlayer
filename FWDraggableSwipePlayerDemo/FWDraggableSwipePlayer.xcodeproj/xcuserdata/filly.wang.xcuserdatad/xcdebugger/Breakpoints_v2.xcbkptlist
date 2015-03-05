@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "826"
-            endingLineNumber = "826"
+            startingLineNumber = "845"
+            endingLineNumber = "845"
             landmarkName = "-volumeHide:"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "940"
-            endingLineNumber = "940"
+            startingLineNumber = "959"
+            endingLineNumber = "959"
             landmarkName = "-monitorPlaybackTime"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1101"
-            endingLineNumber = "1101"
+            startingLineNumber = "1120"
+            endingLineNumber = "1120"
             landmarkName = "-moviePlayBackDidFinish:"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1136"
-            endingLineNumber = "1136"
+            startingLineNumber = "1155"
+            endingLineNumber = "1155"
             landmarkName = "-handleSwipePlayerViewStateChange:"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1152"
-            endingLineNumber = "1152"
+            startingLineNumber = "1171"
+            endingLineNumber = "1171"
             landmarkName = "-play"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1158"
-            endingLineNumber = "1158"
+            startingLineNumber = "1177"
+            endingLineNumber = "1177"
             landmarkName = "-temporyaryPause"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "578"
-            endingLineNumber = "578"
+            startingLineNumber = "588"
+            endingLineNumber = "588"
             landmarkName = "-playBtnOnClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "-initMoviePlayer"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "363"
-            endingLineNumber = "363"
+            startingLineNumber = "373"
+            endingLineNumber = "373"
             landmarkName = "-configBottomControls"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "922"
-            endingLineNumber = "922"
+            startingLineNumber = "941"
+            endingLineNumber = "941"
             landmarkName = "-brightShow:"
             landmarkType = "5">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1000"
-            endingLineNumber = "1000"
+            startingLineNumber = "1019"
+            endingLineNumber = "1019"
             landmarkName = "-updatePlayerFrame:"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "996"
-            endingLineNumber = "996"
+            startingLineNumber = "1015"
+            endingLineNumber = "1015"
             landmarkName = "-updatePlayerFrame:"
             landmarkType = "5">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1009"
-            endingLineNumber = "1009"
+            startingLineNumber = "1028"
+            endingLineNumber = "1028"
             landmarkName = "-updatePlayerFrame:"
             landmarkType = "5">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1017"
-            endingLineNumber = "1017"
+            startingLineNumber = "1036"
+            endingLineNumber = "1036"
             landmarkName = "-updatePlayerFrame:"
             landmarkType = "5">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1005"
-            endingLineNumber = "1005"
+            startingLineNumber = "1024"
+            endingLineNumber = "1024"
             landmarkName = "-updatePlayerFrame:"
             landmarkType = "5">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "539"
-            endingLineNumber = "539"
+            startingLineNumber = "549"
+            endingLineNumber = "549"
             landmarkName = "-handleTap:"
             landmarkType = "5">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/DemoViewController.m"
-            timestampString = "447155810.072779"
+            timestampString = "447221324.387672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "-handleSwipePlayerViewStateChange:"
             landmarkType = "5">
          </BreakpointContent>
@@ -330,27 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWDraggablePlayerManager.m"
-            timestampString = "443699829.720286"
+            timestampString = "447219716.729715"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "-showAtView:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FWDraggableSwipePlayer/FWDraggablePlayerManager.m"
-            timestampString = "443699829.720286"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "398"
-            endingLineNumber = "398"
+            startingLineNumber = "400"
+            endingLineNumber = "400"
             landmarkName = "-endingSwipeVertical"
             landmarkType = "5">
          </BreakpointContent>
@@ -362,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWDraggablePlayerManager.m"
-            timestampString = "443699829.720286"
+            timestampString = "447221324.387672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "516"
-            endingLineNumber = "516"
+            startingLineNumber = "524"
+            endingLineNumber = "524"
             landmarkName = "-lockScreenBtnOnClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -378,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "971"
-            endingLineNumber = "971"
+            startingLineNumber = "990"
+            endingLineNumber = "990"
             landmarkName = "-setOrientation:"
             landmarkType = "5">
          </BreakpointContent>
@@ -410,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "386"
-            endingLineNumber = "386"
+            startingLineNumber = "396"
+            endingLineNumber = "396"
             landmarkName = "-configNextView"
             landmarkType = "5">
          </BreakpointContent>
@@ -457,28 +441,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FWDraggableSwipePlayer/DemoViewController.m"
-            timestampString = "444127963.032728"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "-initWithContentDataList:andConfig:"
             landmarkType = "5">
          </BreakpointContent>
@@ -490,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "447"
-            endingLineNumber = "447"
+            startingLineNumber = "457"
+            endingLineNumber = "457"
             landmarkName = "-configSelectView"
             landmarkType = "5">
          </BreakpointContent>
@@ -506,11 +474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1074"
-            endingLineNumber = "1074"
+            startingLineNumber = "1093"
+            endingLineNumber = "1093"
             landmarkName = "-moviePlayerLoadStateChanged:"
             landmarkType = "5">
          </BreakpointContent>
@@ -522,11 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
             landmarkName = "-configPreloadPage"
             landmarkType = "5">
          </BreakpointContent>
@@ -538,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "-configPreloadPage"
             landmarkType = "5">
          </BreakpointContent>
@@ -554,11 +522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "445"
-            endingLineNumber = "445"
+            startingLineNumber = "455"
+            endingLineNumber = "455"
             landmarkName = "-configSelectView"
             landmarkType = "5">
          </BreakpointContent>
@@ -634,11 +602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "690"
-            endingLineNumber = "690"
+            startingLineNumber = "700"
+            endingLineNumber = "700"
             landmarkName = "-episodeBtnOnClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -650,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "732"
-            endingLineNumber = "732"
+            startingLineNumber = "742"
+            endingLineNumber = "742"
             landmarkName = "-channelBtnOnClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -666,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "711"
-            endingLineNumber = "711"
+            startingLineNumber = "721"
+            endingLineNumber = "721"
             landmarkName = "-subtitleBtnOnClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -682,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "643"
-            endingLineNumber = "643"
+            startingLineNumber = "653"
+            endingLineNumber = "653"
             landmarkName = "-showSelectView"
             landmarkType = "5">
          </BreakpointContent>
@@ -698,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "456"
-            endingLineNumber = "456"
+            startingLineNumber = "466"
+            endingLineNumber = "466"
             landmarkName = "-configSelectView"
             landmarkType = "5">
          </BreakpointContent>
@@ -762,11 +730,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "454"
-            endingLineNumber = "454"
+            startingLineNumber = "464"
+            endingLineNumber = "464"
             landmarkName = "-configSelectView"
             landmarkType = "5">
          </BreakpointContent>
@@ -810,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "-initWithContentDataList:andConfig:"
             landmarkType = "5">
          </BreakpointContent>
@@ -826,11 +794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/DemoViewController.m"
-            timestampString = "447155810.072779"
+            timestampString = "447221324.387672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "-handleSwipePlayerViewStateChange:"
             landmarkType = "5">
          </BreakpointContent>
@@ -842,11 +810,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "605"
-            endingLineNumber = "605"
+            startingLineNumber = "615"
+            endingLineNumber = "615"
             landmarkName = "-lockScreenBtnOnClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -858,11 +826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "640"
-            endingLineNumber = "640"
+            startingLineNumber = "650"
+            endingLineNumber = "650"
             landmarkName = "-showSelectView"
             landmarkType = "5">
             <Locations>
@@ -904,11 +872,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "791"
-            endingLineNumber = "791"
+            startingLineNumber = "810"
+            endingLineNumber = "810"
             landmarkName = "-swipe:"
             landmarkType = "5">
          </BreakpointContent>
@@ -920,11 +888,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "798"
-            endingLineNumber = "798"
+            startingLineNumber = "817"
+            endingLineNumber = "817"
             landmarkName = "-swipe:"
             landmarkType = "5">
          </BreakpointContent>
@@ -936,11 +904,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "890"
-            endingLineNumber = "890"
+            startingLineNumber = "909"
+            endingLineNumber = "909"
             landmarkName = "-volumeShow:"
             landmarkType = "5">
          </BreakpointContent>
@@ -952,11 +920,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "892"
-            endingLineNumber = "892"
+            startingLineNumber = "911"
+            endingLineNumber = "911"
             landmarkName = "-volumeShow:"
             landmarkType = "5">
          </BreakpointContent>
@@ -984,11 +952,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/FWSwiperPlayerController.m"
-            timestampString = "447155550.462998"
+            timestampString = "447220421.088327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "524"
-            endingLineNumber = "524"
+            startingLineNumber = "534"
+            endingLineNumber = "534"
             landmarkName = "-handleTap:"
             landmarkType = "5">
          </BreakpointContent>

@@ -3,9 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "main:main.m">
-      </ContextState>
-      <ContextState
          contextName = "-[FWSwiperPlayerController monitorPlaybackTime]:FWSwiperPlayerController.m">
          <PersistentStrings>
             <PersistentString
@@ -14,10 +11,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "main:main.m">
+      </ContextState>
+      <ContextState
          contextName = "-[DemoViewController viewDidLoad]:DemoViewController.m">
          <PersistentStrings>
             <PersistentString
                value = "list[i]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[FWDraggablePlayerManager configDetailView]:FWDraggablePlayerManager.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.detailView">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

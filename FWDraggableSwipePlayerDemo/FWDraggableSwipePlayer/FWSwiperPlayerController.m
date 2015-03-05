@@ -11,6 +11,7 @@
 NSString *FWSwipePlayerLockBtnOnclick = @"FWSwipePlayerLockBtnOnclick";
 NSString *FWSwipePlayerShareBtnOnclick = @"FWSwipePlayerShareBtnOnclick";
 NSString *FWSwipePlayerCollapseBtnOnclick = @"FWSwipePlayerCollapseBtnOnclick";
+NSString *FWSwipePlayerDoneBtnOnclick = @"FWSwipePlayerDoneBtnOnclick";
 NSString *FWSwipePlayerPlayBtnOnclick = @"FWSwipePlayerPlayBtnOnclick";
 NSString *FWSwipePlayerFullScreenBtnOnclick = @"FWSwipePlayerFullScreenBtnOnclick";
 NSString *FWSwipePlayerNextEpisodeBtnOnclick = @"FWSwipePlayerNextEpisodeBtnOnclick";
@@ -29,6 +30,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     
     UIImageView *navView;
     UIButton *collapseBtn;
+    UIButton *doneBtn;
     UIButton *shareBtn;
     UIButton *videoTypeBtn;
     UIButton *lockScreenBtn;
@@ -292,6 +294,14 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     if(config.draggable)
         [navView addSubview:collapseBtn];
     
+    doneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    doneBtn.frame = CGRectMake(0, 0, 40, 40);
+    [doneBtn setTitle:@"X" forState:UIControlStateNormal];
+    [doneBtn setTitle:@"X" forState:UIControlStateHighlighted];
+    [doneBtn addTarget:self action:@selector(doneBtnOnClick:) forControlEvents:UIControlEventTouchUpInside];
+    if(!config.draggable)
+       [navView addSubview:doneBtn];
+    
     shareBtn = [UIButton buttonWithType:UIButtonTypeCustom] ;
     shareBtn.frame = CGRectMake(self.view.frame.size.width - 50, -5, 50, 50);
     [shareBtn addTarget:self action:@selector(shareBtnOnClick:)forControlEvents:UIControlEventTouchUpInside];
@@ -437,7 +447,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 
 -(void)configSelectView
 {
-    selectView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width, navView.frame.size.height, 200, (screenWidth > screenHeight ? screenHeight : screenWidth))];
+    selectView = [[UIImageView alloc] init];
     selectView.backgroundColor = [UIColor clearColor];
     selectView.userInteractionEnabled = YES;
     [self.view addSubview:selectView];
@@ -757,6 +767,15 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
             [self.delegate collapseBtnOnClick:sender];
 }
 
+-(void)doneBtnOnClick:(id)sender
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:FWSwipePlayerDoneBtnOnclick object:self userInfo:nil] ;
+    
+    if(self.delegate)
+        if([self.delegate respondsToSelector:@selector(doneBtnOnClick:)])
+            [self.delegate doneBtnOnClick:sender];
+}
+
 -(void)shareBtnOnClick:(id)sender
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:FWSwipePlayerShareBtnOnclick object:self userInfo:nil] ;
@@ -997,7 +1016,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     if(loadingBgImageViw) loadingBgImageViw.frame = CGRectMake(centerView.frame.size.width/2 - 40, centerView.frame.size.height/2 + 15, 80, 30);
     
     titleLabel.frame = CGRectMake(5, 0, viewWidth - 140, 33);
-    navView.frame = CGRectMake(0, 0, viewWidth, 20);
+    navView.frame = CGRectMake(0, 0, viewWidth, 40);
     shareBtn.frame = CGRectMake(viewWidth - 50, -5, 50, 50);
     
     bottomView.frame = CGRectMake(0, viewHeight - 30, viewWidth, 30);

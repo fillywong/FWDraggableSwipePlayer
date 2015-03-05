@@ -10,6 +10,7 @@
 #import "FWSwipePlayerBackgroundView.h"
 #import "FWSwipePlayerViewController.h"
 #import "FWSWipePlayerConfig.h"
+@class MovieDetailView;
 
 extern NSString *FWSwipePlayerViewStateChange;
 
@@ -25,7 +26,7 @@ typedef enum _FWSwipeState {
 @property (nonatomic, strong) FWSwipePlayerBackgroundView *backgroundView;
 @property (nonatomic, strong) FWSwipePlayerViewController *playerController;
 @property (nonatomic, assign) FWSwipeState swipeState;
-@property (nonatomic, strong) UIView *detailView;
+@property (nonatomic, strong) MovieDetailView *detailView;
 
 - (id)initWithInfo:(NSDictionary *)infoDict;
 - (id)initWithInfo:(NSDictionary *)infoDict Config:(FWSWipePlayerConfig*)config;
@@ -37,4 +38,6 @@ typedef enum _FWSwipeState {
 - (void)showAtView:(UIView *)view;
 - (void)showAtControllerAndPlay:(UIViewController *)controller;
 - (void)showAtViewAndPlay:(UIView *)view;
+
+- (void)exit;
 @end

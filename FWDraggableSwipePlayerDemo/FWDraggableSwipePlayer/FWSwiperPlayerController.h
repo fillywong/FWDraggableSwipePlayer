@@ -49,6 +49,7 @@ typedef enum _FWPlayerMoveState {
 - (void)subtitleBtnOnClick:(id)sender;
 - (void)channelBtnOnClick:(id)sender;
 - (void)didFinishPlay:(NSURL*)url;
+- (void)doneBtnOnClick:(id)sender;
 
 @end
 

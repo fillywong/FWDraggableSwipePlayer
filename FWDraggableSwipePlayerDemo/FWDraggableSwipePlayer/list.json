@@ -1,6 +1,6 @@
 [
 {
-"title": "adaptive m3u8",
+"title": "dragable adaptive player m3u8",
 "desc": "This is a presentation data 1",
 "url": "https://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8",
  "subtitles": [
@@ -21,9 +21,9 @@
            ]
 },
 {
-"title": "video2",
+"title": "no dragable player view",
 "desc": "This is a presentation data 2",
- "url": "http://techslides.com/demos/sample-videos/small.mp4",
+ "url": "https://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8",
  "subtitles": [
                {
                "lang": "tc"
@@ -42,7 +42,7 @@
            ]
 },
 {
-"title": "video3",
+"title": "video mp4",
 "desc": "This is a presentation data 3",
  "url": "http://techslides.com/demos/sample-videos/small.mp4",
  "subtitles": [

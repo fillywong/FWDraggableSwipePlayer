@@ -61,6 +61,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     UIButton *playBtn;
     UIImageView *swipeView;
     UIImageView *middleBackground;
+    UIImageView *middleImageView;
     UILabel *middleLabel;
     UILabel *progressLabel;
     
@@ -72,6 +73,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     BOOL isLock;
     BOOL isSmall;
     BOOL isSettingViewShow;
+    BOOL isLoading;
     
     float curVolume;
     float curPlaytime;
@@ -86,8 +88,9 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     NSArray *videoList;
     
     UIPanGestureRecognizer *swipeRecognizer;
-    
     UIViewController * attachViewController;
+    
+    NSTimer *bandwidthTimer;
 }
 @end
 
@@ -112,6 +115,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
         needToHideController = NO;
         isLock = NO;
         isSmall = NO;
+        isLoading = YES;
         isSettingViewShow = NO;
         config = configuration;
         colorUtil = [[FWPlayerColorUtil alloc]init];
@@ -145,6 +149,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
             needToHideController = NO;
             isLock = NO;
             isSmall = NO;
+            isLoading = YES;
             isSettingViewShow = NO;
             config = configuration;
             colorUtil = [[FWPlayerColorUtil alloc]init];
@@ -234,6 +239,10 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     middleLabel.text = NSLocalizedString(@"lightness",@"光度");
     [middleBackground addSubview:middleLabel];
     
+    middleImageView = [[UIImageView alloc] initWithFrame:CGRectMake((middleBackground.frame.size.width - 35) / 2, (middleBackground.frame.size.height - 35) / 2, 70 / 2, 70/ 2)];
+    [middleImageView setImage:[UIImage imageNamed:@"play_gesture_brightness"]];
+    [middleBackground addSubview:middleImageView];
+    
     swipeView = [[UIImageView alloc] initWithFrame:CGRectMake((centerView.frame.size.width - 70) / 2, (centerView.frame.size.height - 70) / 2, 70, 70)];
     [swipeView setImage:[UIImage imageNamed:@"play_gesture_forward"]];
     [swipeView setHidden:YES];
@@ -267,7 +276,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     loadingActiviy.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
     [centerView addSubview:loadingActiviy];
     
-    loadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(centerView.frame.size.width/2 - 40, centerView.frame.size.height/2 + 15, 80, 30)];
+    loadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(centerView.frame.size.width/2 - 75, centerView.frame.size.height/2 + 15, 150, 30)];
     loadingLabel.text = NSLocalizedString(@"loading", @"loading...");
     loadingLabel.font = [UIFont systemFontOfSize:12];
     loadingLabel.textAlignment = NSTextAlignmentCenter;
@@ -276,6 +285,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     [centerView addSubview:loadingLabel];
     
     [loadingActiviy startAnimating];
+    [self startBandwidthTimer];
 }
 
 -(void)configNavControls
@@ -348,6 +358,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     [sliderProgress setMaximumTrackImage:[[UIImage alloc] init] forState:UIControlStateNormal];
     [sliderProgress setThumbImage:[UIImage imageNamed:@"api_scrubber_selected"] forState:UIControlStateNormal];
     [sliderProgress addTarget:self action:@selector(changePlayerProgress:) forControlEvents:UIControlEventValueChanged];
+    [sliderProgress addTarget:self action:@selector(progressTouchUp:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside | UIControlEventTouchDragExit | UIControlEventTouchCancel];
     [bottomView addSubview:sliderProgress];
     
     currentPlayTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(2, 4, 40, 20)];
@@ -504,9 +515,27 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     }];
 }
 
+-(void)startBandwidthTimer
+{
+    [self stopBandwidthTimer];
+    bandwidthTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self
+                                                    selector:@selector(retrieveTraffic:) userInfo:nil repeats:YES];
+}
+
 #pragma mark slider
 - (void)changePlayerProgress:(id)sender {
     self.currentPlaybackTime = sliderProgress.value * self.duration;
+}
+-(void)progressTouchUp:(id)sender
+{
+    self.currentPlaybackTime = sliderProgress.value * self.duration;
+
+    if(isPlaying)
+        [self temporyaryPause];
+    else
+        [self pause];
+    
+    [self startLoading];
 }
 
 #pragma mark delegate
@@ -832,10 +861,9 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
         
         if(brightness != brightness0)
             [[UIScreen mainScreen] setBrightness:brightness];
-        
-        [swipeView setImage:[UIImage imageNamed:@"play_gesture_brightness"]];
-        [middleBackground setHidden:NO];
         [self showSwipeView];
+        [swipeView setHidden:YES];
+        [middleBackground setHidden:NO];
     }
 }
 
@@ -909,7 +937,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     centerView.frame = CGRectMake(viewWidth/2 - 100, viewHeight/2 - 100, 200, 200);
     
     if(loadingActiviy) loadingActiviy.frame = CGRectMake(centerView.frame.size.width/2 - 15, centerView.frame.size.height/2 - 15, 35, 35);
-    if(loadingLabel) loadingLabel.frame = CGRectMake(centerView.frame.size.width/2 - 40, centerView.frame.size.height/2 + 15, 80, 30);
+    if(loadingLabel) loadingLabel.frame = CGRectMake(centerView.frame.size.width/2 - 75, centerView.frame.size.height/2 + 15, 150, 30);
     if(loadingBgImageViw) loadingBgImageViw.frame = CGRectMake(centerView.frame.size.width/2 - 40, centerView.frame.size.height/2 + 15, 80, 30);
     
     titleLabel.frame = CGRectMake(5, 0, viewWidth - 140, 33);
@@ -983,40 +1011,51 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     [self.view addSubview:nextView];
     [self.view addSubview:settingView];
     [self.view addSubview:playBtn];
-    
 }
 
 - (void)stopLoading
 {
-    [loadingActiviy stopAnimating];
-    [loadingActiviy removeFromSuperview];
-    [loadingLabel  removeFromSuperview];
-    [loadingBgImageViw removeFromSuperview];
+    if(isLoading)
+    {
+        isLoading = NO;
+        [loadingActiviy stopAnimating];
+        [loadingActiviy removeFromSuperview];
+        [loadingLabel  removeFromSuperview];
+        [loadingBgImageViw removeFromSuperview];
+        
+        [self addViewAfterLoading];
+    }
 }
 
 -(void)startLoading
 {
-    [loadingActiviy startAnimating];
-    [centerView addSubview:loadingBgImageViw];
-    [centerView addSubview:loadingActiviy ];
-    [centerView addSubview:loadingLabel ];
+    if(!isLoading)
+    {
+        [playBtn removeFromSuperview];
+        [navView removeFromSuperview];
+        [bottomView removeFromSuperview];
+        [nextView removeFromSuperview];
+        
+        isLoading = YES;
+        [loadingActiviy startAnimating];
+        [centerView addSubview:loadingBgImageViw];
+        [centerView addSubview:loadingActiviy ];
+        [centerView addSubview:loadingLabel ];
+    }
 }
 
 #pragma mark playerDelagate
 -(void)moviePlayerLoadStateChanged:(NSNotification*)notification
 {
-    [self stopLoading];
-    [self addViewAfterLoading];
-    
     NSLog(@"moviePlayerLoadStateChanged ---------%ld", [self loadState]);
     if ([self loadState] != MPMovieLoadStateUnknown) {
-        [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                        name:MPMoviePlayerLoadStateDidChangeNotification
-                                                      object:nil];
-        [attachViewController.view addSubview:self.view];
-        [self play];
-    } else
-        [self stop];
+        if(!self.view.superview)
+            [attachViewController.view addSubview:self.view];
+        [self stopLoading];
+        
+        if(isPlaying)
+            [self play];
+    }
 }
 
 -(void)moviePlayBackDidFinish:(NSNotification*)notification
@@ -1072,6 +1111,41 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     [self hiddenControls];
 }
 
+#pragma mark timer
+
+- (void)retrieveTraffic:(NSTimer*) timer {
+    MPMovieAccessLog *log = self.accessLog;
+    if(log != nil) {
+        if(self.playableDuration - self.currentPlaybackTime < 10)
+        {
+            if(log.events.count > 0) {
+                if(isPlaying)
+                    [self temporyaryPause];
+                else
+                    [self pause];
+                
+                [self startLoading];
+                
+                double bt = [[log.events objectAtIndex:log.events.count - 1] observedBitrate];
+                
+                if(loadingLabel)
+                {
+                    loadingLabel.text = [NSLocalizedString(@"loading", @"loading..") stringByAppendingString : [NSString stringWithFormat: @"%.1f Kbps/s", bt / 1024]];
+                    NSLog(@"%@", loadingLabel.text);
+                }
+                
+            }
+        }
+        else if (isLoading)
+        {
+            [self stopLoading];
+            if(isPlaying)
+                [self play];
+        }
+    }
+}
+
+
 #pragma mark player base control
 
 -(void)play
@@ -1103,6 +1177,15 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     isPlaying = NO;
 }
 
+-(void)stopBandwidthTimer
+{
+    if(bandwidthTimer)
+    {
+        [bandwidthTimer invalidate];
+        bandwidthTimer = nil;
+    }
+}
+
 -(void)stopAndRemove
 {
     [self stop];
@@ -1128,6 +1211,8 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     [bottomView removeFromSuperview];
     [centerView removeFromSuperview];
     [self.view removeFromSuperview];
+    
+    [self stopBandwidthTimer];
     
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(monitorPlaybackTime) object:nil];
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hiddenControls) object:nil];

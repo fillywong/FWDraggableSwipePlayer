@@ -18,12 +18,13 @@ A draggable player like youtube's and PPS's app, full screen with swipe player
 
 with list video:
   
-```[[[FWSwipePlayerViewController alloc]init] updateMoviePlayerWithVideoList:list Config:[[FWSWipePlayerConfig alloc]init]];```
+```FWSwipePlayerViewController *playerController = [[[FWSwipePlayerViewController alloc]init] updateMoviePlayerWithVideoList:list Config:[[FWSWipePlayerConfig alloc]init]];```
 
-```[self.view addSubview:playerController.view];```
+```[playerController attachTo:self];```
+```[playerController playStartAt:200];```
 
 no list video:
   
-```[[[FWSwipePlayerViewController alloc]init] updateMoviePlayerWithInfo:videoinfo Config:[[FWSWipePlayerConfig alloc]init]];```
+```FWSwipePlayerViewController *playerController = [[[FWSwipePlayerViewController alloc]init] updateMoviePlayerWithInfo:videoinfo Config:[[FWSWipePlayerConfig alloc]init]];```
 
-```[self.view addSubview:playerController.view];```
+```[playerController attachTo:self];```

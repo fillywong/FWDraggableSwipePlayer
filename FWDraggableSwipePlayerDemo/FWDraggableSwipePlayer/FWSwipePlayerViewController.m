@@ -11,7 +11,7 @@
 @interface FWSwipePlayerViewController ()
 {
     NSDictionary *infoDict;
-    FWSWipePlayerConfig *config;
+    FWSwipePlayerConfig *config;
     NSArray *dataList;
     
     UIViewController *attachViewController;
@@ -33,10 +33,10 @@
 
 -(void)updateMoviePlayerWithInfo:(NSDictionary * )dict
 {
-    [self updateMoviePlayerWithInfo:dict Config:[[FWSWipePlayerConfig alloc]init]];
+    [self updateMoviePlayerWithInfo:dict Config:[[FWSwipePlayerConfig alloc]init]];
 }
 
--(void)updateMoviePlayerWithInfo:(NSDictionary * )dict Config:(FWSWipePlayerConfig*)configuration
+-(void)updateMoviePlayerWithInfo:(NSDictionary * )dict Config:(FWSwipePlayerConfig*)configuration
 {
     infoDict = dict;
     config = configuration;
@@ -44,7 +44,7 @@
     [self configPlayer];
 }
 
-- (void)updateMoviePlayerWithVideoList:(NSArray * )list Config:(FWSWipePlayerConfig*)configuration
+- (void)updateMoviePlayerWithVideoList:(NSArray * )list Config:(FWSwipePlayerConfig*)configuration
 {
     dataList = list;
     infoDict = list[0];

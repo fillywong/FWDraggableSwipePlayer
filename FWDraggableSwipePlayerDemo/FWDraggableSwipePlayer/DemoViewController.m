@@ -7,7 +7,7 @@
 //
 
 #import "DemoViewController.h"
-#import "FWSWipePlayerConfig.h"
+#import "FWSwipePlayerConfig.h"
 #import "MovieDetailView.h"
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -75,7 +75,7 @@
     {
         if(self.playerManager == nil)
         {
-            FWSWipePlayerConfig *config = [[FWSWipePlayerConfig alloc]init];
+            FWSwipePlayerConfig *config = [[FWSwipePlayerConfig alloc]init];
             self.playerManager = [[FWDraggablePlayerManager alloc]initWithList:list Config:config];
         }
         else
@@ -107,7 +107,7 @@
         }
         
         playerController =  [[FWSwipePlayerViewController alloc]init];
-        FWSWipePlayerConfig *config = [[FWSWipePlayerConfig alloc]init];
+        FWSwipePlayerConfig *config = [[FWSwipePlayerConfig alloc]init];
 
         NSMutableArray *dataList = [[NSMutableArray alloc]init] ;
 

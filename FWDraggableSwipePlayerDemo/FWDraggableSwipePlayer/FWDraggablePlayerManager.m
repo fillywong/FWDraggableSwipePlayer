@@ -15,10 +15,9 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
 @interface FWDraggablePlayerManager()
 {
     NSDictionary * infoDict;
-    FWSWipePlayerConfig *config;
+    FWSwipePlayerConfig *config;
     
     UIView* rootView;
-    
     
     UIPanGestureRecognizer *dragRecognizer;
     UIPanGestureRecognizer *swipeRecognizer;
@@ -70,10 +69,10 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
 
 - (id)initWithInfo:(NSDictionary *)dict
 {
-    return [self initWithInfo:dict Config:[[FWSWipePlayerConfig alloc]init]];
+    return [self initWithInfo:dict Config:[[FWSwipePlayerConfig alloc]init]];
 }
 
-- (id)initWithInfo:(NSDictionary *)dict Config:(FWSWipePlayerConfig*)configuration
+- (id)initWithInfo:(NSDictionary *)dict Config:(FWSwipePlayerConfig*)configuration
 {
     self = [self init];
     if(self)
@@ -91,10 +90,10 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
 
 - (id)initWithList:(NSArray *)list
 {
-    return [self initWithList:list Config:[[FWSWipePlayerConfig alloc]init]];
+    return [self initWithList:list Config:[[FWSwipePlayerConfig alloc]init]];
 }
 
-- (id)initWithList:(NSArray *)list Config:(FWSWipePlayerConfig*)configuration
+- (id)initWithList:(NSArray *)list Config:(FWSwipePlayerConfig*)configuration
 {
     self = [self init];
     if(self)

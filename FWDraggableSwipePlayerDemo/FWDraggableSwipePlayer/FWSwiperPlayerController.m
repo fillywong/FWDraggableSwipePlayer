@@ -7,7 +7,10 @@
 //
 
 #import "FWSwiperPlayerController.h"
-
+#import "FWSwipePlayerLoadingLayer.h"
+#import "FWSwipePlayerBottomLayer.h"
+#import "FWSwipePlayerSettingLayer.h"
+#import "FWSwipePlayerNavLayer.h"
 NSString *FWSwipePlayerLockBtnOnclick = @"FWSwipePlayerLockBtnOnclick";
 NSString *FWSwipePlayerShareBtnOnclick = @"FWSwipePlayerShareBtnOnclick";
 NSString *FWSwipePlayerSettingBtnOnclick = @"FWSwipePlayerSettingBtnOnclick";
@@ -24,34 +27,13 @@ NSString *FWSwipePlayerChannelBtnOnclick = @"FWSwipePlayerChannelBtnOnclick";
 NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 
 
-@interface FWSwiperPlayerController()
+@interface FWSwiperPlayerController()<FWSwipePlayerBottomLayerDelegate, FWSwipePlayerSettingLayerDelegate, FWSwipePlayerNavLayerDelegate>
 {
-    UIImageView *loadingBgImageViw;
-    UIActivityIndicatorView *loadingActiviy;
-    UILabel *loadingLabel;
-    
-    UIImageView *navView;
-    UIButton *collapseBtn;
-    UIButton *doneBtn;
-    UIButton *shareBtn;
-    UIButton *settingBtn;
-    UIButton *lockScreenBtn;
-    UILabel *titleLabel;
-    
-    UIImageView *bottomView;
-    FWPlayerProgressSlider *sliderProgress;
-    FWPlayerProgressSlider *cacheProgress;
-    UILabel *currentPlayTimeLabel;
-    UILabel *remainPlayTimeLabel;
-    UIButton *fullScreenBtn;
-    
-    UIImageView *settingView;
-    UIButton *settingViewCloseBtn;
-    UIButton *episodeBtn;
-    UIButton *chapterBtn;
-    UIButton *subtitleBtn;
-    UIButton *channelBtn;
-    UIButton *videoTypeBtn;
+    FWSwipePlayerLoadingLayer *loadingLayer;
+    FWSwipePlayerNavLayer *navLayer;
+
+    FWSwipePlayerBottomLayer *bottomLayer;
+    FWSwipePlayerSettingLayer *settingLayer;
     
     UIImageView *nextView;
     UILabel *nextEpisodeLabel;
@@ -78,7 +60,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     float curVolume;
     float curPlaytime;
     
-    FWSWipePlayerConfig * config;
+    FWSwipePlayerConfig * config;
     FWPlayerColorUtil *colorUtil;
     
     CGFloat screenHeight;
@@ -98,10 +80,10 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 
 -(id)initWithContentURL:(NSURL *)url
 {
-    return [self initWithContentURL:url andConfig:[[FWSWipePlayerConfig alloc]init]];
+    return [self initWithContentURL:url andConfig:[[FWSwipePlayerConfig alloc]init]];
 }
 
-- (id)initWithContentURL:(NSURL *)url andConfig:(FWSWipePlayerConfig*)configuration
+- (id)initWithContentURL:(NSURL *)url andConfig:(FWSwipePlayerConfig*)configuration
 {
     self = [super initWithContentURL:url];
     if(self)
@@ -128,10 +110,10 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 
 - (id)initWithContentDataList:(NSArray *)list
 {
-    return [self initWithContentDataList:list andConfig:[[FWSWipePlayerConfig alloc]init]];
+    return [self initWithContentDataList:list andConfig:[[FWSwipePlayerConfig alloc]init]];
 }
 
-- (id)initWithContentDataList:(NSArray *)list andConfig:(FWSWipePlayerConfig*)configuration
+- (id)initWithContentDataList:(NSArray *)list andConfig:(FWSwipePlayerConfig*)configuration
 {
     if([list count] > 0)
     {
@@ -160,7 +142,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
         return self;
     }
     else
-        return [self initWithContentURL:[NSURL URLWithString: @"http://techslides.com/demos/sample-videos/small.mp4"] andConfig:[[FWSWipePlayerConfig alloc]init]];
+        return [self initWithContentURL:[NSURL URLWithString: @"http://techslides.com/demos/sample-videos/small.mp4"] andConfig:[[FWSwipePlayerConfig alloc]init]];
 }
 
 
@@ -248,8 +230,6 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     [swipeView setHidden:YES];
     [centerView addSubview:swipeView];
     
-    
-    
     playBtn = [UIButton buttonWithType:UIButtonTypeCustom] ;
     playBtn.frame = CGRectMake((screenWidth - 35) / 2, (screenHeight - 35) / 2, 35, 35);
     [playBtn setBackgroundImage:[UIImage imageNamed:@"ic_vidcontrol_play"] forState:UIControlStateNormal];
@@ -268,127 +248,28 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 
 -(void)configPreloadPage
 {
-    loadingBgImageViw = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, config.topPlayerHeight)];
-    loadingBgImageViw.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"play_back" ofType:@"png"]];
-    [centerView addSubview:loadingBgImageViw];
+    loadingLayer = [[FWSwipePlayerLoadingLayer alloc]initLayerAttachTo:self.view ];
+    [loadingLayer attach];
     
-    loadingActiviy = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((centerView.frame.size.width - 35) / 2, (centerView.frame.size.height - 35) / 2, 35, 35)];
-    loadingActiviy.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-    [centerView addSubview:loadingActiviy];
-    
-    loadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(centerView.frame.size.width/2 - 75, centerView.frame.size.height/2 + 15, 150, 30)];
-    loadingLabel.text = NSLocalizedString(@"loading", @"loading...");
-    loadingLabel.font = [UIFont systemFontOfSize:12];
-    loadingLabel.textAlignment = NSTextAlignmentCenter;
-    loadingLabel.textColor = [UIColor whiteColor];
-    loadingLabel.backgroundColor = [UIColor clearColor];
-    [centerView addSubview:loadingLabel];
-    
-    [loadingActiviy startAnimating];
     [self startBandwidthTimer];
 }
 
 -(void)configNavControls
 {
-    navView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
-    navView.userInteractionEnabled = YES;
-    [colorUtil setGradientBlackToWhiteColor:navView];
+    navLayer = [[FWSwipePlayerNavLayer alloc]initLayerAttachTo:self.view config:config];
+    navLayer.delegate = self;
     
-    
-    collapseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    collapseBtn.frame = CGRectMake(0, 0, 40, 40);
-    [collapseBtn setBackgroundImage:[UIImage imageNamed:@"ic_vidcontrol_collapse"] forState:UIControlStateNormal];
-    [collapseBtn setBackgroundImage:[UIImage imageNamed:@"ic_vidcontrol_collapse_pressed"] forState:UIControlStateHighlighted];
-    [collapseBtn addTarget:self action:@selector(collapseBtnOnClick:) forControlEvents:UIControlEventTouchUpInside];
-    if(config.draggable)
-        [navView addSubview:collapseBtn];
-    
-    doneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    doneBtn.frame = CGRectMake(0, 0, 40, 40);
-    [doneBtn setTitle:@"X" forState:UIControlStateNormal];
-    [doneBtn setTitle:@"X" forState:UIControlStateHighlighted];
-    [doneBtn addTarget:self action:@selector(doneBtnOnClick:) forControlEvents:UIControlEventTouchUpInside];
-    if(!config.draggable)
-       [navView addSubview:doneBtn];
-    
-    settingBtn = [UIButton buttonWithType:UIButtonTypeCustom] ;
-    settingBtn.frame = CGRectMake(self.view.frame.size.width - 33, 0, 33, 33);
-    [settingBtn addTarget:self action:@selector(settingBtnOnClick:)forControlEvents:UIControlEventTouchUpInside];
-    [settingBtn setImage:[UIImage imageNamed: @"btn_player_setting"] forState:UIControlStateNormal];
-    [settingBtn setBackgroundImage:[UIImage imageNamed:@"btn_player_setting"] forState:UIControlStateHighlighted];
-    [navView addSubview:settingBtn];
-    
-    shareBtn = [UIButton buttonWithType:UIButtonTypeCustom] ;
-    shareBtn.frame = CGRectMake(settingBtn.frame.origin.x - 33, -5, 33, 33);
-    [shareBtn addTarget:self action:@selector(shareBtnOnClick:)forControlEvents:UIControlEventTouchUpInside];
-    [shareBtn setImage:[UIImage imageNamed: @"ic_vidcontrol_share"] forState:UIControlStateNormal];
-    [shareBtn setBackgroundImage:[UIImage imageNamed:@"ic_vidcontrol_share_pressed"] forState:UIControlStateHighlighted];
-    [navView addSubview:shareBtn];
-    
-    lockScreenBtn = [UIButton buttonWithType:UIButtonTypeCustom] ;
-    lockScreenBtn.frame = CGRectMake(shareBtn.frame.origin.x - 74 / 2, 3, 74 / 2, 92 / 2);
-    [lockScreenBtn addTarget:self action:@selector(lockScreenBtnOnClick:)forControlEvents:UIControlEventTouchUpInside];
-    [lockScreenBtn setImage:[UIImage imageNamed: @"plugin_fullscreen_bottom_lock_btn_normal"] forState:UIControlStateNormal];
-    
-    [navView addSubview:lockScreenBtn];
-    
-    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, self.view.frame.size.width - 140, 33)];
-    titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.text = config.currentVideoTitle;
-    [titleLabel setHidden:YES];
-    [navView addSubview:titleLabel];
 }
 
 -(void)configBottomControls
 {
-    bottomView = [[UIImageView alloc] initWithFrame:CGRectMake(0, config.topPlayerHeight - 30, self.view.frame.size.width, 30)];
-    [colorUtil setGradientWhiteToBlackColor:bottomView];
-    bottomView.userInteractionEnabled = YES;
-    
-    
-    cacheProgress = [[FWPlayerProgressSlider alloc] initWithFrame:CGRectMake(35, 13, self.view.frame.size.width - 125, 0)];
-    [cacheProgress setMinimumTrackImage:[UIImage imageNamed:@"api_tv_scrubber_buffer"] forState:UIControlStateNormal];
-    [cacheProgress setMaximumTrackImage:[UIImage imageNamed:@"api_tv_scrubber_background"] forState:UIControlStateNormal];
-    [cacheProgress setThumbImage:[[UIImage alloc] init] forState:UIControlStateNormal];
-    [bottomView addSubview:cacheProgress];
-    sliderProgress = [[FWPlayerProgressSlider alloc] initWithFrame:CGRectMake(cacheProgress.frame.origin.x, cacheProgress.frame.origin.y, cacheProgress.frame.size.width, 50)];
-    sliderProgress.backgroundColor = [UIColor clearColor];
-    [sliderProgress setMinimumTrackImage:[UIImage imageNamed:@"phone_my_main_line"] forState:UIControlStateNormal];
-    [sliderProgress setMaximumTrackImage:[[UIImage alloc] init] forState:UIControlStateNormal];
-    [sliderProgress setThumbImage:[UIImage imageNamed:@"api_scrubber_selected"] forState:UIControlStateNormal];
-    [sliderProgress addTarget:self action:@selector(changePlayerProgress:) forControlEvents:UIControlEventValueChanged];
-    [sliderProgress addTarget:self action:@selector(progressTouchUp:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside | UIControlEventTouchDragExit | UIControlEventTouchCancel];
-    [bottomView addSubview:sliderProgress];
-    
-    currentPlayTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(2, 4, 40, 20)];
-    currentPlayTimeLabel.font = [UIFont systemFontOfSize:9];
-    currentPlayTimeLabel.textColor = [UIColor whiteColor];
-    currentPlayTimeLabel.backgroundColor = [UIColor clearColor];
-    currentPlayTimeLabel.text = @"--:--:--";
-    currentPlayTimeLabel.textAlignment = NSTextAlignmentCenter;
-    
-    [bottomView addSubview:currentPlayTimeLabel];
-    
-    remainPlayTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 100, currentPlayTimeLabel.frame.origin.y, currentPlayTimeLabel.frame.size.width, currentPlayTimeLabel.frame.size.height)];
-    remainPlayTimeLabel.font = [UIFont systemFontOfSize:9];
-    remainPlayTimeLabel.textColor = [UIColor whiteColor];
-    remainPlayTimeLabel.backgroundColor = [UIColor clearColor];
-    remainPlayTimeLabel.text = @"--:--:--";
-    remainPlayTimeLabel.textAlignment = NSTextAlignmentCenter;
-    [bottomView addSubview:remainPlayTimeLabel];
-    
-    fullScreenBtn = [UIButton buttonWithType:UIButtonTypeCustom] ;
-    fullScreenBtn.frame = CGRectMake(self.view.frame.size.width - 50, -7, 50, 50);
-    [fullScreenBtn setBackgroundImage:[UIImage imageNamed:@"ic_vidcontrol_fullscreen_off"] forState:UIControlStateNormal];
-    [fullScreenBtn addTarget:self action:@selector(fullScreenOnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [bottomView addSubview:fullScreenBtn];
-    
+    bottomLayer = [[FWSwipePlayerBottomLayer alloc]initLayerAttachTo:self.view];
+    bottomLayer.delegate = self;
 }
 
 -(void)configNextView
 {
-    nextView = [[UIImageView alloc] initWithFrame:CGRectMake(screenWidth / 2, bottomView.frame.origin.y - 20, screenWidth / 2, 20)];
+    nextView = [[UIImageView alloc] initWithFrame:CGRectMake(screenWidth / 2, bottomLayer.frame.origin.y - 20, screenWidth / 2, 20)];
     nextView.userInteractionEnabled = YES;
     nextView.backgroundColor = [colorUtil colorWithHex:@"#222222" alpha:0.5];
     
@@ -410,67 +291,8 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 
 -(void)configSettingView
 {
-    settingView = [[UIImageView alloc] init];
-    settingView.backgroundColor = [colorUtil colorWithHex:@"#000000" alpha:0.5];
-    settingView.userInteractionEnabled = YES;
-    
-    settingViewCloseBtn = [UIButton buttonWithType:UIButtonTypeCustom] ;
-    [settingViewCloseBtn addTarget:self action:@selector(settingViewCloseBtnOnClick:)forControlEvents:UIControlEventTouchUpInside];
-    [settingViewCloseBtn setTitle:NSLocalizedString(@"done", @"done") forState:UIControlStateNormal];
-    settingViewCloseBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-    [settingViewCloseBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    settingViewCloseBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-    settingViewCloseBtn.layer.borderWidth = 1;
-    settingViewCloseBtn.layer.borderColor = [UIColor whiteColor].CGColor;
-    [settingView addSubview:settingViewCloseBtn];
-    
-    videoTypeBtn = [UIButton buttonWithType:UIButtonTypeCustom] ;
-    [videoTypeBtn addTarget:self action:@selector(videoTypeBtnOnClick:)forControlEvents:UIControlEventTouchUpInside];
-    [videoTypeBtn setTitle:NSLocalizedString(@"quality", @"quality") forState:UIControlStateNormal];
-    videoTypeBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-    videoTypeBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-    videoTypeBtn.layer.borderWidth = 1;
-    videoTypeBtn.layer.borderColor = [UIColor whiteColor].CGColor;
-    [settingView addSubview:videoTypeBtn];
-    
-    if([videoList count] > 0)
-    {
-        episodeBtn = [UIButton buttonWithType:UIButtonTypeCustom] ;
-        [episodeBtn addTarget:self action:@selector(episodeBtnOnClick:)forControlEvents:UIControlEventTouchUpInside];
-        [episodeBtn setTitle:NSLocalizedString(@"episode", @"episode") forState:UIControlStateNormal];
-        episodeBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-        episodeBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-        episodeBtn.layer.borderWidth = 1;
-        episodeBtn.layer.borderColor = [UIColor whiteColor].CGColor;
-        [settingView addSubview:episodeBtn];
-    }
-    
-    if([videoList[0][@"subtitles"] count] > 0)
-    {
-        subtitleBtn = [UIButton buttonWithType:UIButtonTypeCustom] ;
-        [subtitleBtn addTarget:self action:@selector(subtitleBtnOnClick:)forControlEvents:UIControlEventTouchUpInside];
-        [subtitleBtn setTitle:NSLocalizedString(@"subtitle", @"subtitle") forState:UIControlStateNormal];
-        subtitleBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-        subtitleBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-        subtitleBtn.layer.borderWidth = 1;
-        subtitleBtn.layer.borderColor = [UIColor whiteColor].CGColor;
-        [settingView addSubview:subtitleBtn];
-    }
-    
-    if([videoList[0][@"audio"] count] > 0)
-    {
-        channelBtn = [UIButton buttonWithType:UIButtonTypeCustom] ;
-        [channelBtn addTarget:self action:@selector(channelBtnOnClick:)forControlEvents:UIControlEventTouchUpInside];
-        [channelBtn setTitle:NSLocalizedString(@"channel", @"channel") forState:UIControlStateNormal];
-        channelBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-        channelBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-        channelBtn.layer.borderWidth = 1;
-        channelBtn.layer.borderColor = [UIColor whiteColor].CGColor;
-        [settingView addSubview:channelBtn];
-    }
-    
-    settingView.hidden = YES;
-    [self.view addSubview:settingView];
+    settingLayer = [[FWSwipePlayerSettingLayer alloc]initLayerAttachTo:self.view];
+    settingLayer.delegate = self;
 }
 
 -(void)showControls
@@ -480,10 +302,9 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     }
     isAnimationing = YES;
     [UIView animateWithDuration:0.2 animations:^{
-        navView.alpha = 1;
-        bottomView.alpha = 1;
+        [navLayer show];
+        [bottomLayer show];
         playBtn.alpha = 1;
-        settingView.alpha = 1;
     } completion:^(BOOL finished) {
         isAnimationing = NO;
         isShowingCtrls = YES;
@@ -506,8 +327,8 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     }
     isAnimationing = YES;
     [UIView animateWithDuration:0.2 animations:^{
-        navView.alpha = 0;
-        bottomView.alpha = 0;
+        [navLayer disappear];
+        [bottomLayer disappear];
         playBtn.alpha = 0;
     } completion:^(BOOL finished) {
         isAnimationing = NO;
@@ -524,11 +345,11 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 
 #pragma mark slider
 - (void)changePlayerProgress:(id)sender {
-    self.currentPlaybackTime = sliderProgress.value * self.duration;
+    self.currentPlaybackTime = bottomLayer.sliderProgress.value * self.duration;
 }
 -(void)progressTouchUp:(id)sender
 {
-    self.currentPlaybackTime = sliderProgress.value * self.duration;
+    self.currentPlaybackTime = bottomLayer.sliderProgress.value * self.duration;
 
     if(isPlaying)
         [self temporyaryPause];
@@ -536,6 +357,11 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
         [self pause];
     
     [self startLoading];
+}
+
+-(void)progressTouchDown:(id)sender
+{
+    
 }
 
 #pragma mark delegate
@@ -563,17 +389,19 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
             [self.delegate tapInside:sender];
 }
 
+
+
 -(void)fullScreenOnClick:(id)sender
 {
     if(isLock)
         [self lockScreenBtnOnClick:self];
     
     if (isFullScreen) {
-        [fullScreenBtn setBackgroundImage:[UIImage imageNamed:@"ic_vidcontrol_fullscreen_off"] forState:UIControlStateNormal];
+        [bottomLayer.fullScreenBtn setBackgroundImage:[UIImage imageNamed:@"play_mini_p"] forState:UIControlStateNormal];
         [self setOrientation:UIDeviceOrientationPortrait];
         isFullScreen = NO;
     } else {
-        [fullScreenBtn setBackgroundImage:[UIImage imageNamed:@"ic_vidcontrol_fullscreen_on"] forState:UIControlStateNormal];
+        [bottomLayer.fullScreenBtn setBackgroundImage:[UIImage imageNamed:@"ppq_play_full_p"] forState:UIControlStateNormal];
         [self setOrientation:UIDeviceOrientationLandscapeLeft];
         isFullScreen = YES;
     }
@@ -612,7 +440,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 
 -(void)settingViewCloseBtnOnClick:(id)sender
 {
-    [settingView setHidden:YES];
+    [settingLayer disappear];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:FWSwipePlayerSettingViewCloseBtnOnclick object:self userInfo:nil] ;
     
@@ -624,9 +452,9 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 -(void)lockScreenBtnOnClick:(id)sender
 {
     if(!isLock)
-        [lockScreenBtn setImage:[UIImage imageNamed:@"plugin_fullscreen_bottom_lock_btn_selected"] forState:UIControlStateNormal];
+        [navLayer.lockScreenBtn setImage:[UIImage imageNamed:@"plugin_fullscreen_bottom_lock_btn_selected"] forState:UIControlStateNormal];
     else
-        [lockScreenBtn setImage:[UIImage imageNamed:@"plugin_fullscreen_bottom_lock_btn_normal"] forState:UIControlStateNormal];
+        [navLayer.lockScreenBtn setImage:[UIImage imageNamed:@"plugin_fullscreen_bottom_lock_btn_normal"] forState:UIControlStateNormal];
     
     isLock = !isLock;
     
@@ -653,8 +481,6 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 
 -(void)subtitleBtnOnClick:(id)sender
 {
-    
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:FWSwipePlayerSubtitleBtnOnclick object:self userInfo:nil] ;
     
     if(self.delegate)
@@ -702,7 +528,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 -(void)settingBtnOnClick:(id)sender
 {
     [self hiddenControls];
-    [settingView setHidden:NO];
+    [settingLayer show];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:FWSwipePlayerSettingBtnOnclick object:self userInfo:nil] ;
     
@@ -876,11 +702,11 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 
 
 - (void) monitorPlaybackTime {
-    cacheProgress.value = self.playableDuration;
-    sliderProgress.value = self.currentPlaybackTime * 1.0 / self.duration;
-    currentPlayTimeLabel.text =[self convertStringFromInterval:self.currentPlaybackTime];
+    bottomLayer.cacheProgress.value = self.playableDuration;
+    bottomLayer.sliderProgress.value = self.currentPlaybackTime * 1.0 / self.duration;
+    bottomLayer.currentPlayTimeLabel.text =[self convertStringFromInterval:self.currentPlaybackTime];
     int remainTime = self.duration - self.currentPlaybackTime;
-    remainPlayTimeLabel.text = [self convertStringFromInterval:remainTime];
+    bottomLayer.remainPlayTimeLabel.text = [self convertStringFromInterval:remainTime];
     
     if(remainTime < config.autoPlayLabelShowTime && config.autoplay)
     {
@@ -895,8 +721,8 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     if (self.duration != 0 && self.currentPlaybackTime >= self.duration - 1)
     {
         self.currentPlaybackTime = 0;
-        sliderProgress.value = 0;
-        currentPlayTimeLabel.text =[self convertStringFromInterval:self.currentPlaybackTime];
+        bottomLayer.sliderProgress.value = 0;
+        bottomLayer.currentPlayTimeLabel.text =[self convertStringFromInterval:self.currentPlaybackTime];
         [self pause];
         [playBtn setBackgroundImage:[UIImage imageNamed:@"ic_vidcontrol_play"] forState:UIControlStateNormal];
         isPlaying = NO;
@@ -921,10 +747,10 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 }
 
 - (NSString *)convertStringFromInterval:(NSTimeInterval)timeInterval {
-    int hour = (int)timeInterval%3600/60/60;
+    //int hour = (int)timeInterval%3600/60/60;
     int min = (int)timeInterval%3600/60;
     int second = (int)timeInterval%3600%60;
-    return [NSString stringWithFormat:@"%02d:%02d:%02d", hour, min, second];
+    return [NSString stringWithFormat:@"%02d:%02d", min, second];
 }
 
 -(void)updatePlayerFrame:(CGRect)rect
@@ -936,29 +762,12 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     
     centerView.frame = CGRectMake(viewWidth/2 - 100, viewHeight/2 - 100, 200, 200);
     
-    if(loadingActiviy) loadingActiviy.frame = CGRectMake(centerView.frame.size.width/2 - 15, centerView.frame.size.height/2 - 15, 35, 35);
-    if(loadingLabel) loadingLabel.frame = CGRectMake(centerView.frame.size.width/2 - 75, centerView.frame.size.height/2 + 15, 150, 30);
-    if(loadingBgImageViw) loadingBgImageViw.frame = CGRectMake(centerView.frame.size.width/2 - 40, centerView.frame.size.height/2 + 15, 80, 30);
+    [loadingLayer updateFrame:rect];
+    [navLayer updateFrame:CGRectMake(0, 0, viewWidth, 40)];
     
-    titleLabel.frame = CGRectMake(5, 0, viewWidth - 140, 33);
-    navView.frame = CGRectMake(0, 0, viewWidth, 40);
-    settingBtn.frame = CGRectMake(viewWidth - 44, 12, 22, 22);
-    shareBtn.frame = CGRectMake(settingBtn.frame.origin.x - 33, 7, 33, 33);
+    [settingLayer updateFrame:rect];
     
-    settingView.frame = rect;
-    settingViewCloseBtn.frame = CGRectMake(rect.size.width - 44 - 12, 12, 44, 22);
-    videoTypeBtn.frame = CGRectMake(22, viewHeight / 2 - 11, 66, 22);
-    episodeBtn.frame = CGRectMake(videoTypeBtn.frame.origin.x + videoTypeBtn.frame.size.width + 11, viewHeight / 2 - 11, 66, 22);
-    channelBtn.frame = CGRectMake(episodeBtn.frame.origin.x + episodeBtn.frame.size.width + 11, viewHeight / 2 - 11, 66, 22);
-    subtitleBtn.frame = CGRectMake(channelBtn.frame.origin.x + channelBtn.frame.size.width + 11, viewHeight / 2 - 11, 66, 22);
-    
-    bottomView.frame = CGRectMake(0, viewHeight - 30, viewWidth, 30);
-    bottomView.layer.frame = CGRectMake(0, viewHeight - 30, viewWidth, 30);
-    currentPlayTimeLabel.frame = CGRectMake(2, 4, 40, 20);
-    cacheProgress.frame = CGRectMake(currentPlayTimeLabel.frame.size.width + 5, 13, viewWidth - 150, 50);
-    sliderProgress.frame = CGRectMake(cacheProgress.frame.origin.x, cacheProgress.frame.origin.y, cacheProgress.frame.size.width, 50);
-    remainPlayTimeLabel.frame = CGRectMake(sliderProgress.frame.size.width + sliderProgress.frame.origin.x + 5, 4, currentPlayTimeLabel.frame.size.width, currentPlayTimeLabel.frame.size.height);
-    fullScreenBtn.frame = CGRectMake(viewWidth - 50, -7, 45, 45);
+    [bottomLayer updateFrame:CGRectMake(0, viewHeight - 30, viewWidth, 30)];
     
     nextView.frame = CGRectMake(viewWidth / 2, viewHeight - 50, viewWidth / 2, 20);
     nextEpisodeLabel.frame = CGRectMake(0, 0, nextView.frame.size.width - 20, nextView.frame.size.height);
@@ -972,16 +781,13 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     nextEpisodeBtn.frame = CGRectMake(nextView.frame.size.width - 40 / 2, 0, 40 / 2, 40 / 2);
     
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-    
+    [navLayer orientationChange:orientation];
     if(orientation == UIDeviceOrientationLandscapeLeft || orientation == UIDeviceOrientationLandscapeRight)
     {
         playBtn.frame = CGRectMake(viewWidth/2 - 35, viewHeight/2 - 35, 75, 75);
         swipeView.frame = CGRectMake((centerView.frame.size.width - 70) / 2, (centerView.frame.size.height - 70) / 2, 70, 70);
         isFullScreen = YES;
-        [fullScreenBtn setBackgroundImage:[UIImage imageNamed:@"ic_vidcontrol_fullscreen_on"] forState:UIControlStateNormal];
-        [collapseBtn setHidden:YES];
-        [doneBtn setHidden:YES];
-        [titleLabel setHidden:NO];
+        [bottomLayer.fullScreenBtn setBackgroundImage:[UIImage imageNamed:@"ppq_play_full_p"] forState:UIControlStateNormal];
         middleBackground.frame = CGRectMake((viewWidth - 456 / 4) / 2, (viewHeight - 447 / 4) / 2, 456 / 4, 447 / 4);
     }
     else if(orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown)
@@ -989,10 +795,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
         playBtn.frame = CGRectMake(viewWidth/2 - 15, viewHeight/2 - 15, 35, 35);
         swipeView.frame = CGRectMake((centerView.frame.size.width - 35) / 2, (centerView.frame.size.height - 35) / 2, 35, 35);
         isFullScreen = NO;
-        [fullScreenBtn setBackgroundImage:[UIImage imageNamed:@"ic_vidcontrol_fullscreen_off"] forState:UIControlStateNormal];
-        [collapseBtn setHidden:NO];
-        [doneBtn setHidden:NO];
-        [titleLabel setHidden:YES];
+        [bottomLayer.fullScreenBtn setBackgroundImage:[UIImage imageNamed:@"play_mini_p"] forState:UIControlStateNormal];
         middleBackground.frame = CGRectMake((screenWidth - 456 / 4) / 2, (screenHeight - 447 / 4) / 2, 456 / 4, 447 / 4);
     }
     else
@@ -1006,10 +809,9 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 
 - (void)addViewAfterLoading
 {
-    [self.view addSubview:navView];
-    [self.view addSubview:bottomView];
+    [navLayer attach];
+    [bottomLayer attach];
     [self.view addSubview:nextView];
-    [self.view addSubview:settingView];
     [self.view addSubview:playBtn];
 }
 
@@ -1018,11 +820,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     if(isLoading)
     {
         isLoading = NO;
-        [loadingActiviy stopAnimating];
-        [loadingActiviy removeFromSuperview];
-        [loadingLabel  removeFromSuperview];
-        [loadingBgImageViw removeFromSuperview];
-        
+        [loadingLayer remove];
         [self addViewAfterLoading];
     }
 }
@@ -1032,15 +830,11 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     if(!isLoading)
     {
         [playBtn removeFromSuperview];
-        [navView removeFromSuperview];
-        [bottomView removeFromSuperview];
+        [navLayer remove];
+        [bottomLayer remove];
         [nextView removeFromSuperview];
-        
         isLoading = YES;
-        [loadingActiviy startAnimating];
-        [centerView addSubview:loadingBgImageViw];
-        [centerView addSubview:loadingActiviy ];
-        [centerView addSubview:loadingLabel ];
+        [loadingLayer attach];
     }
 }
 
@@ -1070,9 +864,9 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 
 -(void)handleDurationAvailableNotification:(NSNotification*)notification
 {
-    cacheProgress.maximumValue = self.duration;
-    currentPlayTimeLabel.text = [self convertStringFromInterval:self.currentPlaybackTime];
-    remainPlayTimeLabel.text = [self convertStringFromInterval:self.duration - self.currentPlaybackTime];
+    bottomLayer.cacheProgress.maximumValue = self.duration;
+    bottomLayer.currentPlayTimeLabel.text = [self convertStringFromInterval:self.currentPlaybackTime];
+    bottomLayer.remainPlayTimeLabel.text = [self convertStringFromInterval:self.duration - self.currentPlaybackTime];
 }
 
 - (void)becomeActiviy:(NSNotification *)notify {
@@ -1128,10 +922,10 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
                 
                 double bt = [[log.events objectAtIndex:log.events.count - 1] observedBitrate];
                 
-                if(loadingLabel)
+                if(loadingLayer)
                 {
-                    loadingLabel.text = [NSLocalizedString(@"loading", @"loading..") stringByAppendingString : [NSString stringWithFormat: @"%.1f Kbps/s", bt / 1024]];
-                    NSLog(@"%@", loadingLabel.text);
+                    [loadingLayer updateLoadingText:[NSLocalizedString(@"loading", @"loading..") stringByAppendingString : [NSString stringWithFormat: @"%.1f Kbps/s", bt / 1024]]];
+                   
                 }
                 
             }
@@ -1204,11 +998,8 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 }
 
 - (void)endPlayer{
-    [navView removeFromSuperview];
-    [sliderProgress removeFromSuperview];
-    [currentPlayTimeLabel removeFromSuperview];
-    [titleLabel removeFromSuperview];
-    [bottomView removeFromSuperview];
+    [navLayer remove];
+    [bottomLayer remove];
     [centerView removeFromSuperview];
     [self.view removeFromSuperview];
     

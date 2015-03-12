@@ -10,7 +10,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "FWPlayerColorUtil.h"
 #import "FWPlayerProgressSlider.h"
-#import "FWSWipePlayerConfig.h"
+#import "FWSwipePlayerConfig.h"
 
 extern NSString *FWSwipePlayerLockBtnOnclick;
 extern NSString *FWSwipePlayerShareBtnOnclick;
@@ -62,9 +62,9 @@ typedef enum _FWPlayerMoveState {
 @property (nonatomic, assign)id<FWPlayerDelegate> delegate;
 
 - (id)initWithContentURL:(NSURL *)url;
-- (id)initWithContentURL:(NSURL *)url andConfig:(FWSWipePlayerConfig*)config;
+- (id)initWithContentURL:(NSURL *)url andConfig:(FWSwipePlayerConfig*)config;
 - (id)initWithContentDataList:(NSArray *)list;
-- (id)initWithContentDataList:(NSArray *)list andConfig:(FWSWipePlayerConfig*)config;
+- (id)initWithContentDataList:(NSArray *)list andConfig:(FWSwipePlayerConfig*)config;
 
 
 - (void)hiddenControls;

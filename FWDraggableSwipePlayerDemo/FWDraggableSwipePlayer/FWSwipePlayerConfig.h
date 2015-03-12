@@ -1,5 +1,5 @@
 //
-//  FWSWipePlayerConfig.h
+//  FWS2ipePlayerConfig.h
 //  FWDraggableSwipePlayer
 //
 //  Created by Filly Wang on 20/1/15.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface FWSWipePlayerConfig : NSObject
+@interface FWSwipePlayerConfig : NSObject
 
 @property (nonatomic, assign) BOOL draggable;
 @property (nonatomic, assign) BOOL rotatable;
@@ -21,5 +21,8 @@
 @property (nonatomic, assign) int maxHorizontalMovingWidth;
 @property (nonatomic, assign) int autoPlayLabelShowTime;
 @property (nonatomic, strong) NSString *currentVideoTitle;
+@property (nonatomic, strong) NSString *defaultSubtitle;
+@property (nonatomic, strong) NSString *defaultQuality;
+@property (nonatomic, strong) NSString *defaultChannel;
 
 @end

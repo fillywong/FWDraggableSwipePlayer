@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Filly Wang. All rights reserved.
 //
 
-#import "FWSWipePlayerConfig.h"
-@implementation FWSWipePlayerConfig
+#import "FWSwipePlayerConfig.h"
+@implementation FWSwipePlayerConfig
 
 @synthesize draggable, rotatable, autoplay, miniPlayerHeight, miniPlayerWidth, maxVerticalMovingHeight, maxHorizontalMovingWidth;
 
@@ -30,6 +30,9 @@
         self.maxHorizontalMovingWidth = screenWidth;
         self.autoPlayLabelShowTime = 3;
         self.currentVideoTitle = @"";
+        self.defaultSubtitle = @"tc";
+        self.defaultQuality = @"hd";
+        self.defaultChannel = @"Cantonese";
     }
     return self;
 }

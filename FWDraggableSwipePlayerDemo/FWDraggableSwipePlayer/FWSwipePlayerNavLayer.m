@@ -71,6 +71,7 @@
     
     [self.lockScreenBtn addTarget:self action:@selector(lockScreenBtnOnClick:)forControlEvents:UIControlEventTouchUpInside];
     [self.lockScreenBtn setImage:[UIImage imageNamed: @"plugin_fullscreen_bottom_lock_btn_normal"] forState:UIControlStateNormal];
+    [self.lockScreenBtn setHidden:YES];
     [navView addSubview:self.lockScreenBtn];
     
     titleLabel = [[UILabel alloc] init];

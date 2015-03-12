@@ -185,6 +185,8 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
 {
     [self showAtView:view];
     [self.playerController.moviePlayer prepareToPlay];
+    [self.playerController.moviePlayer play];
+    
 }
 
 -(void)backgroundAlphaChange:(CGFloat)alpha

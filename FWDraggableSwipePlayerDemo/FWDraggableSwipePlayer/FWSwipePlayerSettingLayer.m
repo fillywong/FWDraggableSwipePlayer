@@ -128,10 +128,9 @@
     episodeTypeBtnLabel.backgroundColor = [UIColor clearColor];
     [settingView addSubview:episodeTypeBtnLabel];
    
-    NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle), NSUnderlineColorAttributeName:[UIColor orangeColor]};
     
     episodeValueLabel = [[UILabel alloc] init];
-    episodeValueLabel.attributedText = [[NSAttributedString alloc] initWithString: @"one" attributes:underlineAttribute];
+    episodeValueLabel.text = @"one" ;
     episodeValueLabel.font = [UIFont systemFontOfSize:16];
     episodeValueLabel.textAlignment = NSTextAlignmentCenter;
     episodeValueLabel.textColor = [UIColor whiteColor];
@@ -139,7 +138,7 @@
     [settingView addSubview:episodeValueLabel];
     
     subtitleValueLabel = [[UILabel alloc] init];
-    subtitleValueLabel.attributedText = [[NSAttributedString alloc] initWithString: @"English" attributes:underlineAttribute];
+    subtitleValueLabel.text =  @"English" ;
     subtitleValueLabel.font = [UIFont systemFontOfSize:16];
     subtitleValueLabel.textAlignment = NSTextAlignmentCenter;
     subtitleValueLabel.textColor = [UIColor whiteColor];
@@ -147,7 +146,7 @@
     [settingView addSubview:subtitleValueLabel];
     
     channelValueLabel = [[UILabel alloc] init];
-    channelValueLabel.attributedText = [[NSAttributedString alloc] initWithString: @"English" attributes:underlineAttribute];
+    channelValueLabel.text = @"English" ;
     channelValueLabel.font = [UIFont systemFontOfSize:16];
     channelValueLabel.textAlignment = NSTextAlignmentCenter;
     channelValueLabel.textColor = [UIColor whiteColor];
@@ -155,7 +154,7 @@
     [settingView addSubview:channelValueLabel];
     
     videoTypeValueLabel = [[UILabel alloc] init];
-    videoTypeValueLabel.attributedText = [[NSAttributedString alloc] initWithString:@"HD" attributes:underlineAttribute];
+    videoTypeValueLabel.text = @"HD";
     videoTypeValueLabel.font = [UIFont systemFontOfSize:16];
     videoTypeValueLabel.textAlignment = NSTextAlignmentCenter;
     videoTypeValueLabel.textColor = [UIColor whiteColor];

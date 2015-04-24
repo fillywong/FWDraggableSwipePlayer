@@ -11,6 +11,9 @@
 #import "FWSwipePlayerBottomLayer.h"
 #import "FWSwipePlayerSettingLayer.h"
 #import "FWSwipePlayerNavLayer.h"
+
+#define BUFFER_TIME 10
+
 NSString *FWSwipePlayerLockBtnOnclick = @"FWSwipePlayerLockBtnOnclick";
 NSString *FWSwipePlayerShareBtnOnclick = @"FWSwipePlayerShareBtnOnclick";
 NSString *FWSwipePlayerSettingBtnOnclick = @"FWSwipePlayerSettingBtnOnclick";
@@ -842,13 +845,30 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 -(void)moviePlayerLoadStateChanged:(NSNotification*)notification
 {
     NSLog(@"moviePlayerLoadStateChanged ---------%ld", [self loadState]);
-    if ([self loadState] != MPMovieLoadStateUnknown) {
-        if(!self.view.superview)
-            [attachViewController.view addSubview:self.view];
-        [self stopLoading];
-        
-        if(isPlaying)
+    
+    if((self.loadState & MPMovieLoadStateStalled) == MPMovieLoadStateStalled)
+    {
+        [self startLoading];
+    }
+    else
+    {
+        if([self loadState] == MPMovieLoadStatePlayable  && curPlaytime != 0)
+        {
+            [self setInitialPlaybackTime:curPlaytime - 1];
+            [self setCurrentPlaybackTime:curPlaytime];
             [self play];
+            curPlaytime = 0;
+        }
+        else if ([self loadState] != MPMovieLoadStateUnknown)
+        {
+            
+                if(self.playableDuration - self.currentPlaybackTime > BUFFER_TIME )
+                {
+                    [self stopLoading];
+                    if(isPlaying)
+                        [self play];
+                }
+        }
     }
 }
 
@@ -910,24 +930,37 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 - (void)retrieveTraffic:(NSTimer*) timer {
     MPMovieAccessLog *log = self.accessLog;
     if(log != nil) {
-        if(self.playableDuration - self.currentPlaybackTime < 10)
+        if(self.playableDuration - self.currentPlaybackTime < BUFFER_TIME)
         {
-            if(log.events.count > 0) {
-                if(isPlaying)
-                    [self temporyaryPause];
-                else
-                    [self pause];
-                
-                [self startLoading];
-                
-                double bt = [[log.events objectAtIndex:log.events.count - 1] observedBitrate];
-                
-                if(loadingLayer)
+            int remainTime = self.duration - self.currentPlaybackTime;
+            if(remainTime > 1)
+            {
+                if(remainTime > BUFFER_TIME || (remainTime < BUFFER_TIME && self.playableDuration - self.currentPlaybackTime < remainTime - 1))
                 {
-                    [loadingLayer updateLoadingText:[NSLocalizedString(@"loading", @"loading..") stringByAppendingString : [NSString stringWithFormat: @"%.1f Kbps/s", bt / 1024]]];
-                   
+                    if(log.events.count > 0) {
+                        if(isPlaying)
+                            [self temporyaryPause];
+                        else
+                            [self pause];
+                        
+                        [self startLoading];
+                        
+                        double bt = [[log.events objectAtIndex:log.events.count - 1] observedBitrate];
+                        
+                        if(loadingLayer)
+                        {
+                            [loadingLayer updateLoadingText:[NSLocalizedString(@"loading", @"loading..") stringByAppendingString : [NSString stringWithFormat: @"%.1f Kbps/s", bt / 1024]]];
+                           
+                        }
+                        
+                    }
                 }
-                
+                else
+                {
+                    [self stopLoading];
+                    if(isPlaying)
+                        [self play];
+                }
             }
         }
         else if (isLoading)

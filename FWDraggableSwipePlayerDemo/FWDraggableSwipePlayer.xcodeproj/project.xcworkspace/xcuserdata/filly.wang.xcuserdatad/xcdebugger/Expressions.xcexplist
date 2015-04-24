@@ -11,6 +11,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[FWSwiperPlayerController retrieveTraffic:]:FWSwiperPlayerController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "(self.playableDuration - self.currentPlaybackTime)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "main:main.m">
       </ContextState>
       <ContextState

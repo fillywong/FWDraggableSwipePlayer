@@ -12,7 +12,6 @@
 		5A14A8C11A70E647000920FB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A8C01A70E647000920FB /* Images.xcassets */; };
 		5A14A8D01A70E647000920FB /* FWDraggableSwipePlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A14A8CF1A70E647000920FB /* FWDraggableSwipePlayerTests.m */; };
 		5A14A8DD1A70E701000920FB /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A14A8DA1A70E701000920FB /* DemoViewController.m */; };
-		5A14A8DE1A70E701000920FB /* MovieDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A14A8DC1A70E701000920FB /* MovieDetailView.m */; };
 		5A14A8F91A70E765000920FB /* list.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A8F81A70E765000920FB /* list.json */; };
 		5AE348AF1AF753060058E278 /* api_scrubber_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE348941AF753050058E278 /* api_scrubber_selected.png */; };
 		5AE348B01AF753060058E278 /* api_scrubber_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE348951AF753050058E278 /* api_scrubber_selected@2x.png */; };
@@ -52,6 +51,7 @@
 		5AE348E91AF7532D0058E278 /* FWSwipePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE348E21AF7532D0058E278 /* FWSwipePlayerViewController.m */; };
 		5AE348EA1AF7532D0058E278 /* FWSwiperPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE348E41AF7532D0058E278 /* FWSwiperPlayerController.m */; };
 		5AE348ED1AF7533B0058E278 /* FWPlayerColorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE348EC1AF7533B0058E278 /* FWPlayerColorUtil.m */; };
+		5AE348F01AF75E370058E278 /* MovieDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE348EF1AF75E370058E278 /* MovieDetailView.m */; };
 		5AE5814A1AEA16D60006D709 /* FWDraggableSwipePlayer.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 5AE581491AEA16D60006D709 /* FWDraggableSwipePlayer.podspec */; };
 		5AE5814B1AEA3F640006D709 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A14A8BD1A70E647000920FB /* Main.storyboard */; };
 		5AE5814D1AEA40190006D709 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 5AE5814C1AEA40190006D709 /* LICENSE.md */; };
@@ -81,8 +81,6 @@
 		5A14A8CF1A70E647000920FB /* FWDraggableSwipePlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FWDraggableSwipePlayerTests.m; sourceTree = "<group>"; };
 		5A14A8D91A70E701000920FB /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
 		5A14A8DA1A70E701000920FB /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
-		5A14A8DB1A70E701000920FB /* MovieDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailView.h; sourceTree = "<group>"; };
-		5A14A8DC1A70E701000920FB /* MovieDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailView.m; sourceTree = "<group>"; };
 		5A14A8F81A70E765000920FB /* list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = list.json; sourceTree = "<group>"; };
 		5AE348941AF753050058E278 /* api_scrubber_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = api_scrubber_selected.png; path = src/UI/image/api_scrubber_selected.png; sourceTree = "<group>"; };
 		5AE348951AF753050058E278 /* api_scrubber_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "api_scrubber_selected@2x.png"; path = "src/UI/image/api_scrubber_selected@2x.png"; sourceTree = "<group>"; };
@@ -134,6 +132,8 @@
 		5AE348E41AF7532D0058E278 /* FWSwiperPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FWSwiperPlayerController.m; path = src/FWSwiperPlayerController.m; sourceTree = "<group>"; };
 		5AE348EB1AF7533B0058E278 /* FWPlayerColorUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWPlayerColorUtil.h; path = src/Utility/FWPlayerColorUtil.h; sourceTree = "<group>"; };
 		5AE348EC1AF7533B0058E278 /* FWPlayerColorUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FWPlayerColorUtil.m; path = src/Utility/FWPlayerColorUtil.m; sourceTree = "<group>"; };
+		5AE348EE1AF75E370058E278 /* MovieDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovieDetailView.h; path = src/UI/MovieDetailView.h; sourceTree = "<group>"; };
+		5AE348EF1AF75E370058E278 /* MovieDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MovieDetailView.m; path = src/UI/MovieDetailView.m; sourceTree = "<group>"; };
 		5AE581491AEA16D60006D709 /* FWDraggableSwipePlayer.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = FWDraggableSwipePlayer.podspec; path = ../FWDraggableSwipePlayer.podspec; sourceTree = "<group>"; };
 		5AE5814C1AEA40190006D709 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = LICENSE.md; path = ../LICENSE.md; sourceTree = "<group>"; };
 		5AE68F281AA832A8006861AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -190,8 +190,6 @@
 				5A14A8B81A70E647000920FB /* AppDelegate.m */,
 				5A14A8D91A70E701000920FB /* DemoViewController.h */,
 				5A14A8DA1A70E701000920FB /* DemoViewController.m */,
-				5A14A8DB1A70E701000920FB /* MovieDetailView.h */,
-				5A14A8DC1A70E701000920FB /* MovieDetailView.m */,
 				5A14A8BD1A70E647000920FB /* Main.storyboard */,
 				5A14A8C01A70E647000920FB /* Images.xcassets */,
 				5A14A8B31A70E647000920FB /* Supporting Files */,
@@ -284,6 +282,8 @@
 		5ADC7EAE1AAD8183007DA349 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				5AE348EE1AF75E370058E278 /* MovieDetailView.h */,
+				5AE348EF1AF75E370058E278 /* MovieDetailView.m */,
 				5AE348CA1AF7531D0058E278 /* FWSwipePlayerBottomLayer.h */,
 				5AE348CB1AF7531D0058E278 /* FWSwipePlayerBottomLayer.m */,
 				5AE348CC1AF7531D0058E278 /* FWSwipePlayerLayer.h */,
@@ -443,7 +443,7 @@
 				5AE348E61AF7532D0058E278 /* FWPlayerProgressSlider.m in Sources */,
 				5AE348E81AF7532D0058E278 /* FWSwipePlayerConfig.m in Sources */,
 				5AE348D61AF7531D0058E278 /* FWSwipePlayerLoadingLayer.m in Sources */,
-				5A14A8DE1A70E701000920FB /* MovieDetailView.m in Sources */,
+				5AE348F01AF75E370058E278 /* MovieDetailView.m in Sources */,
 				5AE348E71AF7532D0058E278 /* FWSwipePlayerBackgroundView.m in Sources */,
 				5A14A8B91A70E647000920FB /* AppDelegate.m in Sources */,
 				5AE348EA1AF7532D0058E278 /* FWSwiperPlayerController.m in Sources */,

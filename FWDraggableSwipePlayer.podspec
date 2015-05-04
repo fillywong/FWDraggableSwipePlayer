@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "FWDraggableSwipePlayer"
-  s.version          = "1.0.0"
+  s.version          = “1.0.1”
   s.summary          = "MPMoviePlayerController A draggable player like youtube's and PPS's app, full screen with swipe player"
   s.description      = <<-DESC
 FWDraggablePlayerManager *manager = [[FWDraggablePlayerManager alloc]initWithList:list Config:[[FWSWipePlayerConfig alloc]init]];

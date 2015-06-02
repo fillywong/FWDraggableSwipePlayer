@@ -36,7 +36,7 @@
 		5AE348D61AF7531D0058E278 /* FWSwipePlayerLoadingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE348CF1AF7531D0058E278 /* FWSwipePlayerLoadingLayer.m */; };
 		5AE348D71AF7531D0058E278 /* FWSwipePlayerNavLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE348D11AF7531D0058E278 /* FWSwipePlayerNavLayer.m */; };
 		5AE348D81AF7531D0058E278 /* FWSwipePlayerSettingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE348D31AF7531D0058E278 /* FWSwipePlayerSettingLayer.m */; };
-		5AE348E51AF7532D0058E278 /* FWDraggablePlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE348DA1AF7532D0058E278 /* FWDraggablePlayerManager.m */; };
+		5AE348E51AF7532D0058E278 /* FWDraggableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE348DA1AF7532D0058E278 /* FWDraggableManager.m */; };
 		5AE348E61AF7532D0058E278 /* FWPlayerProgressSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE348DC1AF7532D0058E278 /* FWPlayerProgressSlider.m */; };
 		5AE348E71AF7532D0058E278 /* FWSwipePlayerBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE348DE1AF7532D0058E278 /* FWSwipePlayerBackgroundView.m */; };
 		5AE348E81AF7532D0058E278 /* FWSwipePlayerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE348E01AF7532D0058E278 /* FWSwipePlayerConfig.m */; };
@@ -109,8 +109,8 @@
 		5AE348D11AF7531D0058E278 /* FWSwipePlayerNavLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FWSwipePlayerNavLayer.m; path = src/UI/FWSwipePlayerNavLayer.m; sourceTree = "<group>"; };
 		5AE348D21AF7531D0058E278 /* FWSwipePlayerSettingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWSwipePlayerSettingLayer.h; path = src/UI/FWSwipePlayerSettingLayer.h; sourceTree = "<group>"; };
 		5AE348D31AF7531D0058E278 /* FWSwipePlayerSettingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FWSwipePlayerSettingLayer.m; path = src/UI/FWSwipePlayerSettingLayer.m; sourceTree = "<group>"; };
-		5AE348D91AF7532D0058E278 /* FWDraggablePlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWDraggablePlayerManager.h; path = src/FWDraggablePlayerManager.h; sourceTree = "<group>"; };
-		5AE348DA1AF7532D0058E278 /* FWDraggablePlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FWDraggablePlayerManager.m; path = src/FWDraggablePlayerManager.m; sourceTree = "<group>"; };
+		5AE348D91AF7532D0058E278 /* FWDraggableManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWDraggableManager.h; path = src/FWDraggableManager.h; sourceTree = "<group>"; };
+		5AE348DA1AF7532D0058E278 /* FWDraggableManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FWDraggableManager.m; path = src/FWDraggableManager.m; sourceTree = "<group>"; };
 		5AE348DB1AF7532D0058E278 /* FWPlayerProgressSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWPlayerProgressSlider.h; path = src/FWPlayerProgressSlider.h; sourceTree = "<group>"; };
 		5AE348DC1AF7532D0058E278 /* FWPlayerProgressSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FWPlayerProgressSlider.m; path = src/FWPlayerProgressSlider.m; sourceTree = "<group>"; };
 		5AE348DD1AF7532D0058E278 /* FWSwipePlayerBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWSwipePlayerBackgroundView.h; path = src/FWSwipePlayerBackgroundView.h; sourceTree = "<group>"; };
@@ -226,20 +226,16 @@
 		5A14A8DF1A70E721000920FB /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				5AF5F02E1B1D829E00E1402D /* MPMoviePlayer */,
+				5AF5F02D1B1D829500E1402D /* AVPlayer */,
 				5AE68F301AA83312006861AD /* Utility */,
 				5ADC7EAE1AAD8183007DA349 /* UI */,
-				5AE348D91AF7532D0058E278 /* FWDraggablePlayerManager.h */,
-				5AE348DA1AF7532D0058E278 /* FWDraggablePlayerManager.m */,
-				5AE348DB1AF7532D0058E278 /* FWPlayerProgressSlider.h */,
-				5AE348DC1AF7532D0058E278 /* FWPlayerProgressSlider.m */,
+				5AE348D91AF7532D0058E278 /* FWDraggableManager.h */,
+				5AE348DA1AF7532D0058E278 /* FWDraggableManager.m */,
 				5AE348DD1AF7532D0058E278 /* FWSwipePlayerBackgroundView.h */,
 				5AE348DE1AF7532D0058E278 /* FWSwipePlayerBackgroundView.m */,
 				5AE348DF1AF7532D0058E278 /* FWSwipePlayerConfig.h */,
 				5AE348E01AF7532D0058E278 /* FWSwipePlayerConfig.m */,
-				5AE348E11AF7532D0058E278 /* FWSwipePlayerViewController.h */,
-				5AE348E21AF7532D0058E278 /* FWSwipePlayerViewController.m */,
-				5AE348E31AF7532D0058E278 /* FWSwiperPlayerController.h */,
-				5AE348E41AF7532D0058E278 /* FWSwiperPlayerController.m */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -279,6 +275,8 @@
 		5ADC7EAE1AAD8183007DA349 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				5AE348DB1AF7532D0058E278 /* FWPlayerProgressSlider.h */,
+				5AE348DC1AF7532D0058E278 /* FWPlayerProgressSlider.m */,
 				5AE348EE1AF75E370058E278 /* MovieDetailView.h */,
 				5AE348EF1AF75E370058E278 /* MovieDetailView.m */,
 				5AE348CA1AF7531D0058E278 /* FWSwipePlayerBottomLayer.h */,
@@ -303,6 +301,24 @@
 				5AE348EC1AF7533B0058E278 /* FWPlayerColorUtil.m */,
 			);
 			name = Utility;
+			sourceTree = "<group>";
+		};
+		5AF5F02D1B1D829500E1402D /* AVPlayer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = AVPlayer;
+			sourceTree = "<group>";
+		};
+		5AF5F02E1B1D829E00E1402D /* MPMoviePlayer */ = {
+			isa = PBXGroup;
+			children = (
+				5AE348E11AF7532D0058E278 /* FWSwipePlayerViewController.h */,
+				5AE348E21AF7532D0058E278 /* FWSwipePlayerViewController.m */,
+				5AE348E31AF7532D0058E278 /* FWSwiperPlayerController.h */,
+				5AE348E41AF7532D0058E278 /* FWSwiperPlayerController.m */,
+			);
+			name = MPMoviePlayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -446,7 +462,7 @@
 				5AE348D71AF7531D0058E278 /* FWSwipePlayerNavLayer.m in Sources */,
 				5AE348E91AF7532D0058E278 /* FWSwipePlayerViewController.m in Sources */,
 				5AE348D51AF7531D0058E278 /* FWSwipePlayerLayer.m in Sources */,
-				5AE348E51AF7532D0058E278 /* FWDraggablePlayerManager.m in Sources */,
+				5AE348E51AF7532D0058E278 /* FWDraggableManager.m in Sources */,
 				5A14A8B61A70E647000920FB /* main.m in Sources */,
 				5AE5814D1AEA40190006D709 /* LICENSE.md in Sources */,
 				5A14A8DD1A70E701000920FB /* DemoViewController.m in Sources */,

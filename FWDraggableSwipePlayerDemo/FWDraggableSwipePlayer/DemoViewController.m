@@ -76,15 +76,14 @@
         if(self.playerManager == nil)
         {
             FWSwipePlayerConfig *config = [[FWSwipePlayerConfig alloc]init];
-            self.playerManager = [[FWDraggablePlayerManager alloc]initWithList:list Config:config];
+            self.playerManager = [[FWDraggableManager alloc]initWithList:list Config:config];
         }
         else
             [self.playerManager updateInfo:list[[indexPath row]]];
         
-        MovieDetailView *detailView = [[MovieDetailView alloc]init];
-        detailView.backgroundColor = [UIColor blackColor];
-        [detailView initWithInfo:list[[indexPath row]]];
-        self.playerManager.detailView = detailView;
+        UIView *detailView = [[UIView alloc]init];
+        detailView.backgroundColor = [UIColor blueColor];
+        //[self.playerManager setDetailView:detailView];
         
          [[NSNotificationCenter defaultCenter] addObserver:self
          selector:@selector(handleSwipePlayerViewStateChange:)
@@ -108,6 +107,12 @@
         {
             [self.playerManager exit];
             self.playerManager = nil;
+        }
+        
+        if(playerController != nil)
+        {
+            [playerController.moviePlayer stopAndRemove];
+            playerController = nil;
         }
         
         playerController =  [[FWSwipePlayerViewController alloc]init];

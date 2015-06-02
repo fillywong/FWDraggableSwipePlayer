@@ -1,22 +1,23 @@
 //
-//  FWDraggablePlayerManager.m
+//  FWDraggableManager.m
 //  FWDraggableSwipePlayer
 //
 //  Created by Filly Wang on 20/1/15.
 //  Copyright (c) 2015 Filly Wang. All rights reserved.
 //
 
-#import "FWDraggablePlayerManager.h"
+#import "FWDraggableManager.h"
 #import "MovieDetailView.h"
 #define ANIMATION_TIME 0.2f
 
 NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
 
-@interface FWDraggablePlayerManager()
+@interface FWDraggableManager()
 {
     NSDictionary * infoDict;
     FWSwipePlayerConfig *config;
-    
+    FWSwipePlayerBackgroundView *backgroundView;
+    UIView* detailView;
     UIView* rootView;
     
     UIPanGestureRecognizer *dragRecognizer;
@@ -35,14 +36,14 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
 }
 @end
 
-@implementation FWDraggablePlayerManager
+@implementation FWDraggableManager
 
 - (id)init
 {
     self = [super init];
     if(self)
     {
-        self.backgroundView = [[FWSwipePlayerBackgroundView alloc]init];
+        backgroundView = [[FWSwipePlayerBackgroundView alloc]init];
         
         self.swipeState = FWSwipeNone;
         
@@ -81,6 +82,12 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
         config = configuration;
     }
     return self;
+}
+
+- (void)setDetailView:(UIView*)view
+{
+    detailView = view;
+    detailView.frame = CGRectMake(0, config.topPlayerHeight, rootView.frame.size.width, rootView.frame.size.height - config.topPlayerHeight);
 }
 
 - (void)updateInfo:(NSDictionary *)dict
@@ -138,15 +145,16 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
 
 -(void)configDetailView
 {
-    if(self.detailView == nil)
+    if(detailView == nil)
     {
-        self.detailView = [[MovieDetailView alloc]init];
-        [self.detailView initWithInfo:infoDict];
+        detailView = [[MovieDetailView alloc]init];
+        [(MovieDetailView*)detailView initWithInfo:infoDict];
+        [detailView setBackgroundColor:[UIColor whiteColor]];
     }
-    [self.detailView updateFrame:CGRectMake(0, config.topPlayerHeight, rootView.frame.size.width, rootView.frame.size.height - config.topPlayerHeight)];
-    [self.detailView setAlpha:1];
+    [detailView setFrame: CGRectMake(0, config.topPlayerHeight, rootView.frame.size.width, rootView.frame.size.height - config.topPlayerHeight)];
+    [detailView setAlpha:1];
     
-    [self.playerController.view addSubview:self.detailView];
+    [self.playerController.view addSubview:detailView];
 }
 
 -(void)configSetting
@@ -163,7 +171,7 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
     rootView = view;
     [self initConfig];
     
-    [view addSubview:self.backgroundView];
+    [view addSubview:backgroundView];
     [view addSubview:self.playerController.view];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:FWSwipePlayerViewStateChange object:self userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:isSmall],@"isSmall",[NSNumber numberWithBool:isLock],@"isLock",nil] ];
@@ -190,8 +198,8 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
 
 -(void)backgroundAlphaChange:(CGFloat)alpha
 {
-    self.backgroundView.userInteractionEnabled = alpha == 1 ? NO : YES;
-    [self.backgroundView setAlpha:alpha];
+    backgroundView.userInteractionEnabled = alpha == 1 ? NO : YES;
+    [backgroundView setAlpha:alpha];
 }
 
 #pragma mark UIGestureRecognizerDelegate
@@ -280,13 +288,13 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
     {
         [self.playerController.view setFrame:CGRectMake(screenWidth / 2 * HeightPre ,  HeightPre * (config.maxVerticalMovingHeight - config.miniPlayerHeight), screenWidth, screenHeight)];
         [self.playerController.moviePlayer updatePlayerFrame: CGRectMake(0, 0, screenWidth * (1 - HeightPre/ 2)  , config.topPlayerHeight * (1 - HeightPre / 2))];
-        [self.detailView setFrame:CGRectMake(0, config.topPlayerHeight * (1 - HeightPre / 2), self.detailView.frame.size.width  , self.detailView.frame.size.height)];
+        [detailView setFrame:CGRectMake(0, config.topPlayerHeight * (1 - HeightPre / 2), detailView.frame.size.width  , detailView.frame.size.height)];
     }
     
     if(self.playerController.view.frame.origin.y < screenHeight / 2)
-        [self.detailView setAlpha:1 - (self.playerController.view.frame.origin.y / (screenHeight / 2))];
+        [detailView setAlpha:1 - (self.playerController.view.frame.origin.y / (screenHeight / 2))];
     else
-        [self.detailView setAlpha:0];
+        [detailView setAlpha:0];
     
     [self backgroundAlphaChange:1 - (self.playerController.view.frame.origin.y / screenHeight)];
 }
@@ -379,15 +387,15 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
         {
             [self.playerController.view setFrame:CGRectMake(0 , 0, screenWidth, screenHeight)];
             [self.playerController.moviePlayer updatePlayerFrame:CGRectMake(0 , 0, screenWidth, config.topPlayerHeight)];
-            [self.detailView setFrame:CGRectMake(0 , config.topPlayerHeight, self.detailView.frame.size.width , self.detailView.frame.size.height)];
-            [self.detailView setAlpha:1];
+            [detailView setFrame:CGRectMake(0 , config.topPlayerHeight, detailView.frame.size.width , detailView.frame.size.height)];
+            [detailView setAlpha:1];
        }
        else
        {
            [self.playerController.view setFrame:CGRectMake(screenWidth / 2 , config.maxVerticalMovingHeight - config.miniPlayerHeight, screenWidth, screenHeight)];
            [self.playerController.moviePlayer updatePlayerFrame:CGRectMake(0 , 0, screenWidth / 2, config.topPlayerHeight / 2)];
            [self backgroundAlphaChange:0];
-           [self.detailView setAlpha:0];
+           [detailView setAlpha:0];
        }
            
     } completion:^(BOOL finished){
@@ -416,7 +424,7 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
         {
             isAnimation = NO;
             isSmall = YES;
-            [self.detailView setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+            [detailView setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
         }
     }];
 }
@@ -437,7 +445,7 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
             if(config.draggable)
                 [self.playerController.moviePlayer.view  removeGestureRecognizer:dragRecognizer];
             [self.playerController.moviePlayer.view  addGestureRecognizer:swipeRecognizer];
-            [self.detailView setAlpha:0];
+            [detailView setAlpha:0];
         }
     }
     else if(orientation == UIDeviceOrientationPortrait)
@@ -447,7 +455,7 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
             if(config.draggable)
                 [self.playerController.moviePlayer.view  addGestureRecognizer:dragRecognizer];
             [self.playerController.moviePlayer.view  removeGestureRecognizer:swipeRecognizer];
-            [self.detailView setAlpha:1];
+            [detailView setAlpha:1];
         }
     }
 }

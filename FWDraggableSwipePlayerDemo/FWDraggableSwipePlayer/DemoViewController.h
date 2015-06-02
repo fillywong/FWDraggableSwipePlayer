@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FWDraggablePlayerManager.h"
+#import "FWDraggableManager.h"
 #import "FWSwipePlayerViewController.h"
 
 extern NSString *FWSwipePlayerViewStateChange;
@@ -15,6 +15,6 @@ extern NSString *FWSwipePlayerViewStateChange;
 @interface DemoViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, FWPlayerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *listView;
-@property (nonatomic, strong) FWDraggablePlayerManager *playerManager;
+@property (nonatomic, strong) FWDraggableManager *playerManager;
 
 @end

@@ -11,6 +11,5 @@
 
 @interface FWSwipePlayerLoadingLayer : FWSwipePlayerLayer
 
-
 - (void)updateLoadingText:(NSString*)text;
 @end

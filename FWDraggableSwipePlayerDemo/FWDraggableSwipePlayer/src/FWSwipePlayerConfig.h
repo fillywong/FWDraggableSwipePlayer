@@ -21,8 +21,5 @@
 @property (nonatomic, assign) int maxHorizontalMovingWidth;
 @property (nonatomic, assign) int autoPlayLabelShowTime;
 @property (nonatomic, strong) NSString *currentVideoTitle;
-@property (nonatomic, strong) NSString *defaultSubtitle;
-@property (nonatomic, strong) NSString *defaultQuality;
-@property (nonatomic, strong) NSString *defaultChannel;
 
 @end

@@ -33,10 +33,6 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     FWSwipePlayerBottomLayer *bottomLayer;
     FWSwipePlayerSettingLayer *settingLayer;
     
-    UIImageView *nextView;
-    UILabel *nextEpisodeLabel;
-    UIButton *nextEpisodeBtn;
-    
     UIImageView *centerView;
     UIButton *playBtn;
     UIImageView *swipeView;
@@ -153,7 +149,6 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     [self configCenterControls];
     [self configPreloadPage];
     [self configBottomControls];
-    [self configNextView];
     [self configSettingView];
 }
 
@@ -265,28 +260,6 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 {
     bottomLayer = [[FWSwipePlayerBottomLayer alloc]initLayerAttachTo:self.view];
     bottomLayer.delegate = self;
-}
-
--(void)configNextView
-{
-    nextView = [[UIImageView alloc] initWithFrame:CGRectMake(screenWidth / 2, bottomLayer.frame.origin.y - 20, screenWidth / 2, 20)];
-    nextView.userInteractionEnabled = YES;
-    nextView.backgroundColor = [colorUtil colorWithHex:@"#222222" alpha:0.5];
-    
-    nextEpisodeBtn = [UIButton buttonWithType:UIButtonTypeCustom] ;
-    nextEpisodeBtn.frame = CGRectMake(nextView.frame.size.width - 40 / 2, 0, 40 / 2, 40 / 2);
-    [nextEpisodeBtn setBackgroundImage:[UIImage imageNamed:@"home_btn_next_series"] forState:UIControlStateNormal];
-    [nextEpisodeBtn addTarget:self action:@selector(nextEpisodeBtnOnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [nextView addSubview:nextEpisodeBtn];
-    
-    nextEpisodeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, nextView.frame.size.width - 20, nextView.frame.size.height)];
-    nextEpisodeLabel.font = [UIFont systemFontOfSize:9];
-    nextEpisodeLabel.textColor = [UIColor whiteColor];
-    nextEpisodeLabel.text = NSLocalizedString(@"nextplay", @"nextplay");
-    nextEpisodeLabel.textAlignment = NSTextAlignmentCenter;
-    [nextView addSubview:nextEpisodeLabel];
-    
-    [nextView setHidden:YES];
 }
 
 -(void)configSettingView
@@ -683,18 +656,6 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
         remainTime = - remainTime;
     bottomLayer.remainPlayTimeLabel.text = [self convertStringFromInterval:remainTime];
     
-    
-    if(seekTime > 0 && remainTime < config.autoPlayLabelShowTime && config.autoplay)
-    {
-        [nextView setHidden:NO];
-        nextEpisodeLabel.text = [NSString stringWithFormat:@"%d秒後自動播放下一集", remainTime];
-    }
-    else
-    {
-        [nextView setHidden:YES];
-    }
-    
-    
     if (self.duration != 0 && self.currentPlaybackTime >= self.duration - 1)
     {
         self.currentPlaybackTime = 0;
@@ -726,10 +687,10 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 }
 
 - (NSString *)convertStringFromInterval:(NSTimeInterval)timeInterval {
-    //int hour = (int)timeInterval%3600/60/60;
+    int hour = (int)timeInterval/3600;
     int min = (int)timeInterval%3600/60;
     int second = (int)timeInterval%3600%60;
-    return [NSString stringWithFormat:@"%02d:%02d", min, second];
+    return [NSString stringWithFormat:@"%02d:%02d:%02d", hour,min, second];
 }
 
 -(void)updatePlayerFrame:(CGRect)rect
@@ -747,16 +708,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     
     [bottomLayer updateFrame:CGRectMake(0, viewHeight - 36, viewWidth, 36)];
     
-    nextView.frame = CGRectMake(viewWidth / 2, viewHeight - 50, viewWidth / 2, 20);
-    nextEpisodeLabel.frame = CGRectMake(0, 0, nextView.frame.size.width - 20, nextView.frame.size.height);
-    float precent = viewHeight / config.topPlayerHeight;
     
-    if(precent < 1)
-        nextEpisodeLabel.font = [UIFont systemFontOfSize:9 * precent];
-    else
-        nextEpisodeLabel.font = [UIFont systemFontOfSize:9];
-    
-    nextEpisodeBtn.frame = CGRectMake(nextView.frame.size.width - 40 / 2, 0, 40 / 2, 40 / 2);
     
     UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
     [navLayer orientationChange:orientation];
@@ -789,7 +741,6 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 {
     [navLayer attach];
     [bottomLayer attach];
-    [self.view addSubview:nextView];
     [self.view addSubview:playBtn];
 }
 
@@ -810,7 +761,6 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
         [playBtn removeFromSuperview];
         [navLayer remove];
         [bottomLayer remove];
-        [nextView removeFromSuperview];
         isLoading = YES;
         [loadingLayer attach];
     }

@@ -16,6 +16,5 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 
 - (void)initWithInfo:(NSDictionary *)dic;
-- (void)updateFrame:(CGRect)frame;
 - (void)updateAlpha:(CGFloat)alpha;
 @end

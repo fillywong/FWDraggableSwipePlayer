@@ -83,10 +83,10 @@
     bottomView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
     bottomView.layer.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
     fullScreenBtn.frame = CGRectMake(bottomView.frame.size.width - 22 - 20, 0 , 40, 40);
-    currentPlayTimeLabel.frame = CGRectMake(12,bottomView.frame.size.height - 8 - 9, 32, 9);
+    currentPlayTimeLabel.frame = CGRectMake(12,bottomView.frame.size.height - 8 - 9, 50, 9);
     remainPlayTimeLabel.frame = CGRectMake(fullScreenBtn.frame.origin.x - 12 - currentPlayTimeLabel.frame.size.width, currentPlayTimeLabel.frame.origin.y, currentPlayTimeLabel.frame.size.width, currentPlayTimeLabel.frame.size.height);
     cacheProgress.frame = CGRectMake(currentPlayTimeLabel.frame.size.width + currentPlayTimeLabel.frame.origin.x + 5, bottomView.frame.size.height - 4 - 10, remainPlayTimeLabel.frame.origin.x - currentPlayTimeLabel.frame.size.width - currentPlayTimeLabel.frame.origin.x - 10, 4);
-    sliderProgress.frame = CGRectMake(cacheProgress.frame.origin.x, cacheProgress.frame.origin.y, cacheProgress.frame.size.width, 30);
+    sliderProgress.frame = CGRectMake(cacheProgress.frame.origin.x, cacheProgress.frame.origin.y, cacheProgress.frame.size.width, frame.size.height);
 }
 
 -(void)fullScreenOnClick:(id)sender

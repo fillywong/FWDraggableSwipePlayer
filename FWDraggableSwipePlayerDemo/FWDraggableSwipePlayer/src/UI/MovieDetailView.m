@@ -44,9 +44,9 @@
     
 }
 
--(void)updateFrame:(CGRect)frame
+-(void)setFrame:(CGRect)frame
 {
-    self.frame = frame;
+    [super setFrame:frame];
     titleLabel.frame = CGRectMake(10, 10, frame.size.width - 20, 30);
     descLabel.frame = CGRectMake(10, CGRectGetMaxY(titleLabel.frame) + CGRectGetHeight(titleLabel.frame), frame.size.width - 20, 100);
     self.scrollView.frame = CGRectMake(0, 0, frame.size.width , frame.size.height);

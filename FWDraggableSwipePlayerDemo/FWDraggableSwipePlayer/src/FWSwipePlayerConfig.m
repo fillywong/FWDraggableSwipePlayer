@@ -30,9 +30,6 @@
         self.maxHorizontalMovingWidth = screenWidth;
         self.autoPlayLabelShowTime = 3;
         self.currentVideoTitle = @"";
-        self.defaultSubtitle = @"tc";
-        self.defaultQuality = @"hd";
-        self.defaultChannel = @"Cantonese";
     }
     return self;
 }

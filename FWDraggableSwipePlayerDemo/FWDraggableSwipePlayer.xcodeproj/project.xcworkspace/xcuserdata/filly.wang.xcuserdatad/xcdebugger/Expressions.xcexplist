@@ -30,6 +30,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[MovieDetailView initWithInfo:]:MovieDetailView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[dic objectForKey:@&quot;desc&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[FWDraggablePlayerManager configDetailView]:FWDraggablePlayerManager.m">
          <PersistentStrings>
             <PersistentString

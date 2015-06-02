@@ -1,5 +1,5 @@
 //
-//  FWDraggablePlayerManager.h
+//  FWDraggableManager.h
 //  FWDraggableSwipePlayer
 //
 //  Created by Filly Wang on 20/1/15.
@@ -22,17 +22,16 @@ typedef enum _FWSwipeState {
     FWSwipeRight = 4
 } FWSwipeState;
 
-@interface FWDraggablePlayerManager : NSObject<UIGestureRecognizerDelegate, FWPlayerDelegate>
-@property (nonatomic, strong) FWSwipePlayerBackgroundView *backgroundView;
+@interface FWDraggableManager : NSObject<UIGestureRecognizerDelegate, FWPlayerDelegate>
 @property (nonatomic, strong) FWSwipePlayerViewController *playerController;
 @property (nonatomic, assign) FWSwipeState swipeState;
-@property (nonatomic, strong) MovieDetailView *detailView;
 
 - (id)initWithInfo:(NSDictionary *)infoDict;
 - (id)initWithInfo:(NSDictionary *)infoDict Config:(FWSwipePlayerConfig*)config;
 - (id)initWithList:(NSArray *)dataList;
 - (id)initWithList:(NSArray *)list Config:(FWSwipePlayerConfig*)config;
 - (void)updateInfo:(NSDictionary *)infoDict;
+- (void)setDetailView:(UIView*)detailView;
 
 - (void)showAtController:(UIViewController *)controller;
 - (void)showAtView:(UIView *)view;

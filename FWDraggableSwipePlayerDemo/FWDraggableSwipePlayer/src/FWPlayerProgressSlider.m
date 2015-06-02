@@ -29,5 +29,11 @@
     return CGRectMake(bounds.origin.x, bounds.origin.y, bounds.size.width, 4);
 }
 
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent*)event {
+    CGRect bounds = self.bounds;
+    bounds = CGRectInset(bounds, -10, -15);
+    return CGRectContainsPoint(bounds, point);
+}
+
 
 @end

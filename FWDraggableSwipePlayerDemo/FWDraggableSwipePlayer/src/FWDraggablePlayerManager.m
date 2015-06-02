@@ -142,7 +142,6 @@ NSString *FWSwipePlayerViewStateChange = @"FWSwipePlayerViewStateChange";
     {
         self.detailView = [[MovieDetailView alloc]init];
         [self.detailView initWithInfo:infoDict];
-        self.detailView.backgroundColor = [UIColor whiteColor];
     }
     [self.detailView updateFrame:CGRectMake(0, config.topPlayerHeight, rootView.frame.size.width, rootView.frame.size.height - config.topPlayerHeight)];
     [self.detailView setAlpha:1];

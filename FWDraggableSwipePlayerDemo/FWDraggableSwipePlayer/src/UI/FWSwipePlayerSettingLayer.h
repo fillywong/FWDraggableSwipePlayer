@@ -10,11 +10,7 @@
 
 @protocol FWSwipePlayerSettingLayerDelegate <NSObject>
 
--(void)subtitleBtnOnClick:(id)sender;
--(void)channelBtnOnClick:(id)sender;
--(void)videoTypeBtnOnClick:(id)sender;
 -(void)settingViewCloseBtnOnClick:(id)sender;
--(void)episodeBtnOnClick:(id)sender;
 @end
 
 @interface FWSwipePlayerSettingLayer : FWSwipePlayerLayer

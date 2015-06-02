@@ -92,14 +92,6 @@
     [collapseBtn addTarget:self action:@selector(collapseBtnOnClick:) forControlEvents:UIControlEventTouchUpInside];
     if(config.draggable)
         [navView addSubview:collapseBtn];
-    
-    doneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    doneBtn.frame = CGRectMake(0, 0, 40, 40);
-    [doneBtn setTitle:@"X" forState:UIControlStateNormal];
-    [doneBtn setTitle:@"X" forState:UIControlStateHighlighted];
-    [doneBtn addTarget:self action:@selector(doneBtnOnClick:) forControlEvents:UIControlEventTouchUpInside];
-    if(!config.draggable)
-        [navView addSubview:doneBtn];
 }
 
 -(void)updateFrame:(CGRect)frame
@@ -157,13 +149,6 @@
     if(self.delegate)
         if([self.delegate respondsToSelector:@selector(shareBtnOnClick:)])
             [self.delegate shareBtnOnClick:sender];
-}
-
--(void)chapterMarkBtnOnClick:(id)sender
-{
-    if(self.delegate)
-        if([self.delegate respondsToSelector:@selector(chapterMarkBtnOnClick:)])
-            [self.delegate chapterMarkBtnOnClick:sender];
 }
 
 -(void)lockScreenBtnOnClick:(id)sender

@@ -81,20 +81,24 @@
         else
             [self.playerManager updateInfo:list[[indexPath row]]];
         
-        MovieDetailView *detailView = [[MovieDetailView alloc]initWithFrame:self.view.frame];
+        MovieDetailView *detailView = [[MovieDetailView alloc]init];
+        detailView.backgroundColor = [UIColor blackColor];
         [detailView initWithInfo:list[[indexPath row]]];
+        self.playerManager.detailView = detailView;
         
          [[NSNotificationCenter defaultCenter] addObserver:self
          selector:@selector(handleSwipePlayerViewStateChange:)
          name:FWSwipePlayerViewStateChange object:nil];
-        
-        [self.playerManager showAtViewAndPlay:self.view];
         
         if(playerController != nil)
         {
             [playerController.moviePlayer stopAndRemove];
             playerController = nil;
         }
+        
+        [self.playerManager showAtViewAndPlay:self.view];
+        
+        
         self.listView.frame = CGRectMake(0, 0, self.listView.frame.size.width, self.view.frame.size.height);
         
     }

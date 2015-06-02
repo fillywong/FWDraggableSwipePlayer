@@ -12,7 +12,6 @@
 #import "FWSwipePlayerSettingLayer.h"
 #import "FWSwipePlayerNavLayer.h"
 
-#define BUFFER_TIME 10
 
 NSString *FWSwipePlayerLockBtnOnclick = @"FWSwipePlayerLockBtnOnclick";
 NSString *FWSwipePlayerShareBtnOnclick = @"FWSwipePlayerShareBtnOnclick";
@@ -22,11 +21,7 @@ NSString *FWSwipePlayerDoneBtnOnclick = @"FWSwipePlayerDoneBtnOnclick";
 NSString *FWSwipePlayerPlayBtnOnclick = @"FWSwipePlayerPlayBtnOnclick";
 NSString *FWSwipePlayerFullScreenBtnOnclick = @"FWSwipePlayerFullScreenBtnOnclick";
 NSString *FWSwipePlayerNextEpisodeBtnOnclick = @"FWSwipePlayerNextEpisodeBtnOnclick";
-NSString *FWSwipePlayerVideoTypeBtnOnclick = @"FWSwipePlayerVideoTypeBtnOnclick";
 NSString *FWSwipePlayerSettingViewCloseBtnOnclick = @"FWSwipePlayerSettingViewCloseBtnOnclick";
-NSString *FWSwipePlayerEpisodeBtnOnclick = @"FWSwipePlayerEpisodeBtnOnclick";
-NSString *FWSwipePlayerSubtitleBtnOnclick = @"FWSwipePlayerSuntitleBtnOnclick";
-NSString *FWSwipePlayerChannelBtnOnclick = @"FWSwipePlayerChannelBtnOnclick";
 NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 
 
@@ -59,6 +54,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     BOOL isSmall;
     BOOL isSettingViewShow;
     BOOL isLoading;
+    BOOL isSeeking;
     
     float curVolume;
     float curPlaytime;
@@ -102,6 +98,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
         isSmall = NO;
         isLoading = YES;
         isSettingViewShow = NO;
+        isSeeking = NO;
         config = configuration;
         colorUtil = [[FWPlayerColorUtil alloc]init];
         self.moveState = FWPlayerMoveNone;
@@ -235,7 +232,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     
     playBtn = [UIButton buttonWithType:UIButtonTypeCustom] ;
     playBtn.frame = CGRectMake((screenWidth - 35) / 2, (screenHeight - 35) / 2, 35, 35);
-    [playBtn setBackgroundImage:[UIImage imageNamed:@"ic_vidcontrol_play"] forState:UIControlStateNormal];
+    [playBtn setBackgroundImage:[UIImage imageNamed:@"btn_player_play"] forState:UIControlStateNormal];
     [playBtn addTarget:self action:@selector(playBtnOnClick:) forControlEvents:UIControlEventTouchUpInside];
     [playBtn setAlpha:1];
     
@@ -348,18 +345,14 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 
 #pragma mark slider
 - (void)changePlayerProgress:(id)sender {
-    self.currentPlaybackTime = bottomLayer.sliderProgress.value * self.duration;
+    isSeeking = YES;
+    [self updatePlayBackTime:(bottomLayer.sliderProgress.value * self.duration)];
 }
 -(void)progressTouchUp:(id)sender
 {
+    isSeeking = NO;
     self.currentPlaybackTime = bottomLayer.sliderProgress.value * self.duration;
 
-    if(isPlaying)
-        [self temporyaryPause];
-    else
-        [self pause];
-    
-    [self startLoading];
 }
 
 -(void)progressTouchDown:(id)sender
@@ -432,15 +425,6 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
             [self.delegate playBtnOnClick:sender];
 }
 
--(void)videoTypeBtnOnClick:(id)sender
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:FWSwipePlayerVideoTypeBtnOnclick object:self userInfo:nil] ;
-    
-    if(self.delegate)
-        if([self.delegate respondsToSelector:@selector(videoTypeBtnOnClick:)])
-            [self.delegate videoTypeBtnOnClick:sender];
-}
-
 -(void)settingViewCloseBtnOnClick:(id)sender
 {
     [settingLayer disappear];
@@ -469,36 +453,6 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     if(self.delegate)
         if([self.delegate respondsToSelector:@selector(lockScreenBtnOnClick:)])
             [self.delegate lockScreenBtnOnClick:sender];
-}
-
-
--(void)episodeBtnOnClick:(id)sender
-{
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:FWSwipePlayerEpisodeBtnOnclick object:self userInfo:nil] ;
-    
-    if(self.delegate)
-        if([self.delegate respondsToSelector:@selector(episodeBtnOnClick:)])
-            [self.delegate episodeBtnOnClick:sender];
-}
-
--(void)subtitleBtnOnClick:(id)sender
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:FWSwipePlayerSubtitleBtnOnclick object:self userInfo:nil] ;
-    
-    if(self.delegate)
-        if([self.delegate respondsToSelector:@selector(subtitleBtnOnClick:)])
-            [self.delegate subtitleBtnOnClick:sender];
-}
-
-- (void)channelBtnOnClick:(id)sender
-{
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:FWSwipePlayerChannelBtnOnclick object:self userInfo:nil] ;
-    
-    if(self.delegate)
-        if([self.delegate respondsToSelector:@selector(channelBtnOnClick:)])
-            [self.delegate channelBtnOnClick:sender];
 }
 
 -(void)collapseBtnOnClick:(id)sender
@@ -706,12 +660,31 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 
 - (void) monitorPlaybackTime {
     bottomLayer.cacheProgress.value = self.playableDuration;
-    bottomLayer.sliderProgress.value = self.currentPlaybackTime * 1.0 / self.duration;
-    bottomLayer.currentPlayTimeLabel.text =[self convertStringFromInterval:self.currentPlaybackTime];
-    int remainTime = self.duration - self.currentPlaybackTime;
+    
+    if(self.playbackState == MPMoviePlaybackStatePlaying)
+    {
+        if(!isSeeking)
+        {
+            bottomLayer.sliderProgress.value = self.currentPlaybackTime * 1.0 / self.duration;
+            [self updatePlayBackTime:self.currentPlaybackTime];
+        }
+    }
+    else if(self.playbackState == MPMoviePlaybackStateSeekingForward || self.playbackState == MPMoviePlaybackStateSeekingBackward || self.playbackState ==MPMoviePlaybackStateStopped || self.playbackState ==MPMoviePlaybackStatePaused)
+    {
+        [self updatePlayBackTime:(bottomLayer.sliderProgress.value * self.duration)];
+    }
+}
+
+-(void)updatePlayBackTime:(float)seekTime
+{
+    bottomLayer.currentPlayTimeLabel.text =[self convertStringFromInterval:seekTime];
+    int remainTime = self.duration - seekTime;
+    if(remainTime < 0)
+        remainTime = - remainTime;
     bottomLayer.remainPlayTimeLabel.text = [self convertStringFromInterval:remainTime];
     
-    if(remainTime < config.autoPlayLabelShowTime && config.autoplay)
+    
+    if(seekTime > 0 && remainTime < config.autoPlayLabelShowTime && config.autoplay)
     {
         [nextView setHidden:NO];
         nextEpisodeLabel.text = [NSString stringWithFormat:@"%d秒後自動播放下一集", remainTime];
@@ -721,19 +694,22 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
         [nextView setHidden:YES];
     }
     
+    
     if (self.duration != 0 && self.currentPlaybackTime >= self.duration - 1)
     {
         self.currentPlaybackTime = 0;
         bottomLayer.sliderProgress.value = 0;
         bottomLayer.currentPlayTimeLabel.text =[self convertStringFromInterval:self.currentPlaybackTime];
         [self pause];
-        [playBtn setBackgroundImage:[UIImage imageNamed:@"ic_vidcontrol_play"] forState:UIControlStateNormal];
+        [playBtn setBackgroundImage:[UIImage imageNamed:@"btn_player_play"] forState:UIControlStateNormal];
         isPlaying = NO;
+        
     } else {
         if (isPlaying) {
             [self performSelector:@selector(monitorPlaybackTime) withObject:nil afterDelay:1];
         }
     }
+
 }
 
 -(void)setOrientation:(int)orientation
@@ -767,10 +743,9 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
     
     [loadingLayer updateFrame:rect];
     [navLayer updateFrame:CGRectMake(0, 0, viewWidth, 40)];
-    
     [settingLayer updateFrame:rect];
     
-    [bottomLayer updateFrame:CGRectMake(0, viewHeight - 30, viewWidth, 30)];
+    [bottomLayer updateFrame:CGRectMake(0, viewHeight - 36, viewWidth, 36)];
     
     nextView.frame = CGRectMake(viewWidth / 2, viewHeight - 50, viewWidth / 2, 20);
     nextEpisodeLabel.frame = CGRectMake(0, 0, nextView.frame.size.width - 20, nextView.frame.size.height);
@@ -844,8 +819,6 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 #pragma mark playerDelagate
 -(void)moviePlayerLoadStateChanged:(NSNotification*)notification
 {
-    NSLog(@"moviePlayerLoadStateChanged ---------%ld", [self loadState]);
-    
     if((self.loadState & MPMovieLoadStateStalled) == MPMovieLoadStateStalled)
     {
         [self startLoading];
@@ -861,14 +834,10 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
         }
         else if ([self loadState] != MPMovieLoadStateUnknown)
         {
-            
-                if(self.playableDuration - self.currentPlaybackTime > BUFFER_TIME )
-                {
-                    [self stopLoading];
-                    if(isPlaying)
-                        [self play];
-                }
+            [self stopLoading];
         }
+        if(isPlaying)
+            [self play];
     }
 }
 
@@ -895,7 +864,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 
 - (void)enterBackground:(NSNotification *)notity {
     [super pause];
-    [playBtn setBackgroundImage:[UIImage imageNamed:@"ic_vidcontrol_play"] forState:UIControlStateNormal];
+    [playBtn setBackgroundImage:[UIImage imageNamed:@"btn_player_play"] forState:UIControlStateNormal];
     isPlaying = NO;
 }
 
@@ -930,44 +899,12 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 - (void)retrieveTraffic:(NSTimer*) timer {
     MPMovieAccessLog *log = self.accessLog;
     if(log != nil) {
-        if(self.playableDuration - self.currentPlaybackTime < BUFFER_TIME)
+        double bt = [[log.events objectAtIndex:log.events.count - 1] observedBitrate];
+        
+        if(loadingLayer)
         {
-            int remainTime = self.duration - self.currentPlaybackTime;
-            if(remainTime > 1)
-            {
-                if(remainTime > BUFFER_TIME || (remainTime < BUFFER_TIME && self.playableDuration - self.currentPlaybackTime < remainTime - 1))
-                {
-                    if(log.events.count > 0) {
-                        if(isPlaying)
-                            [self temporyaryPause];
-                        else
-                            [self pause];
-                        
-                        [self startLoading];
-                        
-                        double bt = [[log.events objectAtIndex:log.events.count - 1] observedBitrate];
-                        
-                        if(loadingLayer)
-                        {
-                            [loadingLayer updateLoadingText:[NSLocalizedString(@"loading", @"loading..") stringByAppendingString : [NSString stringWithFormat: @"%.1f Kbps/s", bt / 1024]]];
-                           
-                        }
-                        
-                    }
-                }
-                else
-                {
-                    [self stopLoading];
-                    if(isPlaying)
-                        [self play];
-                }
-            }
-        }
-        else if (isLoading)
-        {
-            [self stopLoading];
-            if(isPlaying)
-                [self play];
+            [loadingLayer updateLoadingText:[NSLocalizedString(@"loading", @"loading..") stringByAppendingString : [NSString stringWithFormat: @"%.1f Kbps/s", bt / 1024]]];
+            
         }
     }
 }
@@ -978,7 +915,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 -(void)play
 {
     [super play];
-    [playBtn setBackgroundImage:[UIImage imageNamed:@"ic_vidcontrol_pause_pressed"] forState:UIControlStateNormal];
+    [playBtn setBackgroundImage:[UIImage imageNamed:@"btn_player_pause"] forState:UIControlStateNormal];
     isPlaying = YES;
     [self monitorPlaybackTime];
 }
@@ -993,7 +930,7 @@ NSString *FWSwipePlayerOnTap = @"FWSwipePlayerOnTap";
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(monitorPlaybackTime) object:nil];
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hiddenControls) object:nil];
-    [playBtn setBackgroundImage:[UIImage imageNamed:@"ic_vidcontrol_play"] forState:UIControlStateNormal];
+    [playBtn setBackgroundImage:[UIImage imageNamed:@"btn_player_play"] forState:UIControlStateNormal];
     [super pause];
     isPlaying = NO;
 }

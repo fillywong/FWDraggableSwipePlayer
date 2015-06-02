@@ -66,11 +66,9 @@
     [bottomView addSubview:cacheProgress];
     
     sliderProgress = [[FWPlayerProgressSlider alloc] init];
-    sliderProgress.minimumTrackTintColor = [UIColor orangeColor];
+    sliderProgress.minimumTrackTintColor = [UIColor redColor];
     sliderProgress.maximumTrackTintColor = [colorUtil colorWithHex:@"#000000" alpha:0.50];
     sliderProgress.thumbTintColor = [colorUtil colorWithHex:@"#000000" alpha:0.50];
-    [sliderProgress setThumbImage:[UIImage imageNamed:@"api_scrubber_selected"] forState:UIControlStateNormal];
-    [sliderProgress setThumbImage:[UIImage imageNamed:@"api_scrubber_selected"] forState:UIControlStateHighlighted];
     [sliderProgress addTarget:self action:@selector(changePlayerProgress:) forControlEvents:UIControlEventValueChanged];
     [sliderProgress addTarget:self action:@selector(progressTouchUp:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside | UIControlEventTouchDragExit | UIControlEventTouchCancel];
     [sliderProgress addTarget:self action:@selector(progressTouchDown:) forControlEvents:UIControlEventTouchDown];

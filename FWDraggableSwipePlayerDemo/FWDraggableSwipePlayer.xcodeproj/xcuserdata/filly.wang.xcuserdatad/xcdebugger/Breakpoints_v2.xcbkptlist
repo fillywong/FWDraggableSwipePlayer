@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/DemoViewController.m"
-            timestampString = "447221578.302883"
+            timestampString = "454910356.277208"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "-handleSwipePlayerViewStateChange:"
             landmarkType = "5">
          </BreakpointContent>
@@ -586,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FWDraggableSwipePlayer/DemoViewController.m"
-            timestampString = "447221578.302883"
+            timestampString = "454910356.277208"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "-handleSwipePlayerViewStateChange:"
             landmarkType = "5">
          </BreakpointContent>
